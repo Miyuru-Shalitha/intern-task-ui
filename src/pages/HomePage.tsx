@@ -6,11 +6,18 @@ import SteeringWheelImage from "../assets/pngs/steering-wheel.png";
 import OxigenTankImage from "../assets/pngs/oxygen-tank.png";
 import CarEngineImage from "../assets/pngs/car-engine.png";
 import ServiceCard from "../components/ServiceCard";
+import CarRepairImage from "../assets/pngs/car-repair-image.png";
+import DamperImage from "../assets/pngs/damper.png";
+import BrakeImage from "../assets/pngs/brake.png";
+import CarRepairImage1 from "../assets/pngs/car-repair (1).png";
+import RepairShopImage from "../assets/pngs/repair-shop.png";
+import FrontCarImage from "../assets/pngs/front-car.png";
+import WhoWeAreIcon from "../components/WhoWeAreIcon";
 
 export default function HomePage() {
   return (
     <Box>
-      {/* TODO(Miyuru): Header */}
+      {/* Header Section */}
       <Box
         height={638}
         position="relative"
@@ -68,7 +75,7 @@ export default function HomePage() {
         </Box>
       </Box>
 
-      {/* TODO(Miyuru):  */}
+      {/* Service Section */}
       <Stack alignItems="center">
         <Stack
           alignItems="center"
@@ -116,6 +123,70 @@ export default function HomePage() {
           >
             We offer genuine part replacements for tires, valves, sensors, and more. With transparent pricing and expert installation, we keep your vehicle safe, reliable, and ready for the road
           </ServiceCard>
+        </Stack>
+      </Stack>
+
+      {/* Who We Are Section */}
+      <Stack
+        pt={133 / 8}
+        alignItems="center"
+      >
+        <Stack
+          direction="row"
+          maxWidth={1440}>
+          <Box flex={1}>
+            <img src={CarRepairImage} />
+          </Box>
+
+          <Stack pl={33 / 8} flex={1}>
+            <Typography
+              color="#9F9F9F"
+              fontSize={14}
+              fontWeight={600}
+              fontFamily="Poppins"
+            >
+              WHO WE ARE
+            </Typography>
+
+            <Typography
+              fontSize={25}
+              fontWeight={600}
+              fontFamily="Poppins"
+            >
+              Dedicated to Keeping You on the Road
+            </Typography>
+
+            <Typography
+              mt={18 / 8}
+              color="#757575"
+              fontFamily="Poppins"
+              fontWeight={500}
+            >
+              At Align Ease, we combine years of mechanical expertise with digital convenience. Our web-based platform lets customers book services, track maintenance, and get real-time notifications — all in one place. With a focus on customer satisfaction, we deliver transparency, efficiency, and peace of mind
+            </Typography>
+
+            <Typography
+              mt={12 / 8}
+              color="#757575"
+              fontFamily="Poppins"
+              fontWeight={500}
+            >
+              Whether you need tire ordering, wheel balancing, nitrogen filling, or part replacement, Align Ease ensures every service is handled with precision and care. Our intuitive system empowers customers with real-time access to service updates, personalized recommendations, and a complete history of their vehicle maintenance
+            </Typography>
+
+            <Stack
+              direction="row"
+              gap={31 / 8}
+              justifyContent="center"
+              mt={25 / 8}
+            >
+              <WhoWeAreIcon imageUrl={DamperImage} />
+              <WhoWeAreIcon imageUrl={BrakeImage} />
+              <WhoWeAreIcon imageUrl={CarRepairImage1} />
+              <WhoWeAreIcon imageUrl={RepairShopImage} />
+              <WhoWeAreIcon imageUrl={FrontCarImage} />
+            </Stack>
+          </Stack>
         </Stack>
       </Stack>
     </Box>
