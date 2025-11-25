@@ -1,9 +1,9 @@
-import { Typography } from "@mui/material";
+import SignInPage from "./pages/SignInPage";
 
 export default function App() {
   return (
-    <div>
-      <Typography>Hello, world!</Typography>
-    </div>
+    <>
+      <SignInPage />
+    </>
   );
 }
