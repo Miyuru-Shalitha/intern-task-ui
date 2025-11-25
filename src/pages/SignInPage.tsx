@@ -1,14 +1,16 @@
-import styles from "./sign-in-page.module.css"
+import styles from "../styles/sign-in-page.module.css";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import SignInBackground from "../assets/pngs/sign-in-background.png";
 import SignInForground from "../assets/pngs/sign-in-forground.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SignInPage() {
   const [signInFormData, setSignInFormData] = useState({
     email: "",
     password: ""
   });
+  const navigate = useNavigate();
 
   const handleSignIn = () => {
     if (signInFormData.email.length === 0) {
@@ -25,8 +27,8 @@ export default function SignInPage() {
         email: "",
         password: ""
       });
-      // TODO(Miyuru): Navigate to the relavent page.
       alert("SIGN IN SICCESSFUL!");
+      navigate("/", { replace: true });
     }
   };
 
