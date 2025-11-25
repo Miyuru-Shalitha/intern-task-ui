@@ -27,6 +27,7 @@ export default function ClientFeedbackCard({
         pr={17 / 8}
         pb={46 / 8}
         pl={28 / 8}
+        borderRadius={5 / 8}
       >
         <Stack
           direction="row"
