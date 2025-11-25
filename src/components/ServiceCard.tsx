@@ -14,6 +14,7 @@ export default function ServiceCard({
       bgcolor="#E9E9E9"
       px={32 / 8}
       pt={37 / 8}
+      pb={33 / 8}
       borderRadius={10 / 8}
       alignItems="center"
     >

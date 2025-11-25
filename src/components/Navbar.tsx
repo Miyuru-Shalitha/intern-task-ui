@@ -3,6 +3,7 @@ import { Button, Stack } from "@mui/material";
 import Logo from "../assets/pngs/logo.png";
 import NavListItem from "./NavListItem";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // TODO(Miyuru): Nav item paths should be replaced witih correct paths.
 const navItems = [
@@ -30,8 +31,11 @@ const navItems = [
 
 export default function Navbar() {
   const [activeNavItem, setActiveNavItem] = useState(0);
+  const navigate = useNavigate();
 
-  const handleClickLogIn = () => { };
+  const handleClickLogIn = () => {
+    navigate("/sign-in");
+  };
 
   const handleClickSignUp = () => { };
 

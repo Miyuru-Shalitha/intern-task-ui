@@ -8,7 +8,7 @@ export default function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/auth" element={<SignInPage />} />
+          <Route path="/sign-in" element={<SignInPage />} />
 
           <Route path="" element={<Layout />}>
             <Route index element={<HomePage />} />
