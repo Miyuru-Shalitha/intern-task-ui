@@ -15,6 +15,12 @@ import FrontCarImage from "../assets/pngs/front-car.png";
 import WhoWeAreIcon from "../components/WhoWeAreIcon";
 import AlignEaseImage from "../assets/pngs/align-ease.png";
 import ForgroundManImage from "../assets/pngs/sign-in-forground.png"; // TODO(Miyuru): Rename this png for more genaralized usage.
+import ClientFeedbackCard from "../components/ClientFeedbackCard";
+import ClientProfileAvatar1 from "../assets/pngs/client-feedback-image-1.png";
+import ClientProfileAvatar2 from "../assets/pngs/client-feedback-image-2.png";
+import ClientProfileAvatar3 from "../assets/pngs/client-feedback-image-3.png";
+import ForwardIcon from "../assets/svgs/forward.svg";
+import BackwardIcon from "../assets/svgs/backward.svg";
 
 export default function HomePage() {
   return (
@@ -223,7 +229,7 @@ export default function HomePage() {
               fontFamily="Poppins"
               fontWeight={500}
             >
-              Reliable care, effortless service, and peace of mind—drive worry-free.Schedule with ease, get expert attention, and keep your vehicle in top shape wherever the road takes you. From routine tune-ups to advanced diagnostics, we deliver quality and convenience that keeps you moving forward confidently.
+              Reliable care, effortless service, and peace of mind—drive worry-free.Schedule with ease, get expert attention, and keep your vehicle in top shape wherever the road takes you. <br />From routine tune-ups to advanced diagnostics, we deliver quality and convenience that keeps you moving forward confidently.
             </Typography>
           </Stack>
         </Box>
@@ -243,6 +249,99 @@ export default function HomePage() {
             className={styles.alignEaseForegroundImage}
             src={ForgroundManImage}
           /> */}
+        </Stack>
+      </Stack>
+
+      {/* What Our Client Say Section */}
+      <Stack
+        direction="row"
+        justifyContent="center"
+        pt={52 / 8}
+        pb={46 / 8}
+      >
+        <Stack
+          maxWidth={1440}
+          alignItems="center"
+        >
+          <Typography
+            fontFamily="Poppins"
+            fontWeight={700}
+            fontSize={25}
+          >
+            What Our Cliens Say
+          </Typography>
+
+          <Typography
+            fontFamily="Poppins"
+            color="#757575"
+            fontWeight={500}
+            textAlign="center"
+          >
+            Here's what our clients have to say about their<br /> experiences with us.
+          </Typography>
+
+          <Stack
+            direction="row"
+            alignItems="center"
+            mt={80 / 8}
+          >
+            <Box
+              width={50}
+              height={50}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              bgcolor="#F2F2F2"
+              mr={28 / 8}
+              borderRadius={1000}
+              sx={{cursor: "pointer"}}
+            >
+              <img
+                className={styles.backwardIcon}
+                src={BackwardIcon}
+              />
+            </Box>
+
+            <Stack
+              direction="row"
+              gap={25 / 8}
+            >
+              <ClientFeedbackCard
+                imageUrl={ClientProfileAvatar1}
+                ratings={5}
+                description="Great experience! The layout was clear, and the whole process was effortless. I really appreciated the attention to design and usability"
+              />
+
+              <ClientFeedbackCard
+                imageUrl={ClientProfileAvatar2}
+                ratings={4}
+                description="Impressed with the user-friendly interface. Navigation was intuitive, and everything felt organized and aligned perfectly. Booking took less than a minute!"
+              />
+
+              <ClientFeedbackCard
+                imageUrl={ClientProfileAvatar3}
+                ratings={5}
+                description="Great experience! The layout was clear, and the whole process was effortless. I really appreciated the attention to design and usability"
+              />
+            </Stack>
+
+            <Box
+              width={50}
+              height={50}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              bgcolor="#F2F2F2"
+              ml={28 / 8}
+              borderRadius={1000}
+              sx={{cursor: "pointer"}}
+            >
+              <img
+                className={styles.forwardIcon}
+                src={ForwardIcon}
+              />
+            </Box>
+          </Stack>
         </Stack>
       </Stack>
     </Box>
