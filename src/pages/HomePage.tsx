@@ -294,7 +294,7 @@ export default function HomePage() {
               bgcolor="#F2F2F2"
               mr={28 / 8}
               borderRadius={1000}
-              sx={{cursor: "pointer"}}
+              sx={{ cursor: "pointer" }}
             >
               <img
                 className={styles.backwardIcon}
@@ -303,6 +303,7 @@ export default function HomePage() {
             </Box>
 
             <Stack
+              maxWidth={1440}
               direction="row"
               gap={25 / 8}
             >
@@ -334,7 +335,7 @@ export default function HomePage() {
               bgcolor="#F2F2F2"
               ml={28 / 8}
               borderRadius={1000}
-              sx={{cursor: "pointer"}}
+              sx={{ cursor: "pointer" }}
             >
               <img
                 className={styles.forwardIcon}
