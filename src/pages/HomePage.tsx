@@ -13,6 +13,8 @@ import CarRepairImage1 from "../assets/pngs/car-repair (1).png";
 import RepairShopImage from "../assets/pngs/repair-shop.png";
 import FrontCarImage from "../assets/pngs/front-car.png";
 import WhoWeAreIcon from "../components/WhoWeAreIcon";
+import AlignEaseImage from "../assets/pngs/align-ease.png";
+import ForgroundManImage from "../assets/pngs/sign-in-forground.png"; // TODO(Miyuru): Rename this png for more genaralized usage.
 
 export default function HomePage() {
   return (
@@ -187,6 +189,60 @@ export default function HomePage() {
               <WhoWeAreIcon imageUrl={FrontCarImage} />
             </Stack>
           </Stack>
+        </Stack>
+      </Stack>
+
+      {/* Align Ease Section */}
+      <Stack
+        mt={172 / 8}
+        bgcolor="#000"
+        color="#FFF"
+        direction="row"
+        justifyContent="center"
+        pt={79 / 8}
+        pb={59 / 8}
+      >
+        <Box
+          flex={1}
+          display="flex"
+          justifyContent="flex-end"
+        >
+          <Stack
+            gap={28 / 8}
+            maxWidth={552}
+          >
+            <Typography
+              fontFamily="Poppins"
+              fontWeight={600}
+              fontSize={30}
+            >
+              Trusted maintenance and diagnostics for smooth, reliable driving every mile.
+            </Typography>
+
+            <Typography
+              fontFamily="Poppins"
+              fontWeight={500}
+            >
+              Reliable care, effortless service, and peace of mind—drive worry-free.Schedule with ease, get expert attention, and keep your vehicle in top shape wherever the road takes you. From routine tune-ups to advanced diagnostics, we deliver quality and convenience that keeps you moving forward confidently.
+            </Typography>
+          </Stack>
+        </Box>
+
+        <Stack
+          position="relative"
+          justifyContent="center"
+          flex={1}
+        >
+          <img
+            className={styles.alignEaseBackgroundImage}
+            src={AlignEaseImage}
+          />
+
+          {/* TODO(Miyuru): This image should be properly clipped. */}
+          {/* <img
+            className={styles.alignEaseForegroundImage}
+            src={ForgroundManImage}
+          /> */}
         </Stack>
       </Stack>
     </Box>

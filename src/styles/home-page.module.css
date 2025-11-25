@@ -5,3 +5,13 @@
 .headerHeroTitleHighlight {
   color: red;
 }
+
+.alignEaseBackgroundImage {
+  width: 388px;
+}
+
+.alignEaseForegroundImage {
+  position: absolute;
+  right: 0;
+  width: 482px;
+}
