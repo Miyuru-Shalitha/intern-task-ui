@@ -40,9 +40,12 @@ export default function HomePage() {
           width="100%"
           height="100%"
           position="absolute"
-          left={0}
+          left="50%"
           top={0}
           maxWidth={1440}
+          sx={{
+            transform: "translateX(-50%)"
+          }}
         >
           <Stack
             width={610}
