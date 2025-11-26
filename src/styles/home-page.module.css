@@ -1,0 +1,27 @@
+.headerBackgroundImage {
+  width: 100%;
+}
+
+.headerHeroTitleHighlight {
+  color: red;
+}
+
+.alignEaseBackgroundImage {
+  width: 388px;
+}
+
+.alignEaseForegroundImage {
+  position: absolute;
+  right: 0;
+  width: 482px;
+}
+
+.backwardIcon {
+  width: 12.22px;
+  height: 14px;
+}
+
+.forwardIcon {
+  width: 12.22px;
+  height: 14px;
+}
