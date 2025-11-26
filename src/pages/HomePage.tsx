@@ -1,4 +1,3 @@
-import styles from "../styles/home-page.module.css";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import HomeHeaderBackgroundImage from "../assets/pngs/home-header-background.png";
 import WheelImage from "../assets/pngs/wheel.png";
@@ -32,7 +31,9 @@ export default function HomePage() {
         overflow="hidden"
       >
         <img
-          className={styles.headerBackgroundImage}
+          style={{
+            width: "100%"
+          }}
           src={HomeHeaderBackgroundImage}
         />
 
@@ -61,7 +62,11 @@ export default function HomePage() {
                 lineHeight={1.2}
                 fontFamily="Poppins"
               >
-                <span className={styles.headerHeroTitleHighlight}>Precision</span> That <span className={styles.headerHeroTitleHighlight}>Drives</span> <br />Confidence
+                <span style={{
+                  color: "red"
+                }}>Precision</span> That <span style={{
+                  color: "red"
+                }}>Drives</span> <br />Confidence
               </Typography>
 
               <Typography color="#FFF" fontFamily="Poppins">
@@ -243,7 +248,9 @@ export default function HomePage() {
           flex={1}
         >
           <img
-            className={styles.alignEaseBackgroundImage}
+            style={{
+              width: 338
+            }}
             src={AlignEaseImage}
           />
 
@@ -300,7 +307,10 @@ export default function HomePage() {
               sx={{ cursor: "pointer" }}
             >
               <img
-                className={styles.backwardIcon}
+                style={{
+                  width: 12.22,
+                  height: 14
+                }}
                 src={BackwardIcon}
               />
             </Box>
@@ -341,7 +351,10 @@ export default function HomePage() {
               sx={{ cursor: "pointer" }}
             >
               <img
-                className={styles.forwardIcon}
+                style={{
+                  width: 12.22,
+                  height: 14
+                }}
                 src={ForwardIcon}
               />
             </Box>

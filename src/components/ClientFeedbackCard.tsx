@@ -1,4 +1,3 @@
-import styles from "../styles/client-feedback-card.module.css";
 import { Box, Stack, Typography } from "@mui/material";
 import StarActiveIcon from "../assets/svgs/star-active.svg";
 import StarInActiveIcon from "../assets/svgs/star-inactive.svg";
@@ -16,7 +15,13 @@ export default function ClientFeedbackCard({
     <Stack width={354}>
       <Box position="relative">
         <img
-          className={styles.profileAvatar}
+          style={{
+            width: 80,
+            height: 80,
+            position: "absolute",
+            left: 17,
+            bottom: -40
+          }}
           src={imageUrl}
         />
       </Box>
@@ -36,10 +41,24 @@ export default function ClientFeedbackCard({
           gap={5 / 8}
         >
           {Array.from({ length: ratings }).map((_, index) => (
-            <img key={index} className={styles.starIcon} src={StarActiveIcon} />
+            <img
+              key={index}
+              style={{
+                width: 29,
+                height: 29
+              }}
+              src={StarActiveIcon}
+            />
           ))}
           {Array.from({ length: 5 - ratings }).map((_, index) => (
-            <img key={index} className={styles.starIcon} src={StarInActiveIcon} />
+            <img
+              key={index}
+              style={{
+                width: 29,
+                height: 29
+              }}
+              src={StarInActiveIcon}
+            />
           ))}
         </Stack>
 

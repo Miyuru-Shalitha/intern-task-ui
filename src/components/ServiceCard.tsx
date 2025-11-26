@@ -1,4 +1,3 @@
-import styles from "../styles/service-card.module.css";
 import { Stack, Typography } from "@mui/material";
 
 export default function ServiceCard({
@@ -18,7 +17,13 @@ export default function ServiceCard({
       borderRadius={10 / 8}
       alignItems="center"
     >
-      <img className={styles.serviceCardImage} src={imageUrl} />
+      <img
+        style={{
+          width: 80,
+          height: 80
+        }}
+        src={imageUrl}
+      />
 
       <Typography
         fontWeight={600}

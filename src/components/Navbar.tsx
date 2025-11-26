@@ -1,4 +1,3 @@
-import styles from "../styles/navbar.module.css";
 import { Button, Stack } from "@mui/material";
 import Logo from "../assets/pngs/logo.png";
 import NavListItem from "./NavListItem";

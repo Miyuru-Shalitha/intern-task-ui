@@ -1,4 +1,3 @@
-import styles from "../styles/footer.module.css";
 import { Box, Stack, Typography } from "@mui/material";
 import Logo from "../assets/pngs/logo.png";
 import FacebookIcon from "../assets/svgs/facebook.svg";
@@ -27,7 +26,13 @@ export default function Footer() {
         justifyContent="space-between"
       >
         <Stack>
-          <img className={styles.logo} src={Logo} />
+          <img
+            style={{
+              width: 224,
+              height: 81
+            }}
+            src={Logo}
+          />
 
           <Typography
             width={390}
@@ -41,10 +46,19 @@ export default function Footer() {
             gap={14 / 8}
             direction="row"
           >
-            <img className={styles.socialMediaIcon} src={FacebookIcon} />
+            <img
+              style={{
+                width: 30,
+                height: 30
+              }}
+              src={FacebookIcon}
+            />
 
             <Box
-              className={styles.socialMediaIcon}
+              style={{
+                width: 30,
+                height: 30
+              }}
               bgcolor="#FFF"
               width={30}
               height={30}
