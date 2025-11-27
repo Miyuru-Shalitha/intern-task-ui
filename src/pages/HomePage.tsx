@@ -1,5 +1,3 @@
-import { Box } from "@mui/material";
-
 import ServiceSection from "../components/home_page/ServiceSection";
 import HeaderSection from "../components/home_page/HeaderSection";
 import WhoWeAreSection from "../components/home_page/WhoWeAreSection";
@@ -8,12 +6,12 @@ import WhatOurClientsSaySection from "../components/home_page/WhatOurClientsSayS
 
 export default function HomePage() {
   return (
-    <Box>
+    <>
       <HeaderSection />
-      <ServiceSection />
+      {/* <ServiceSection />
       <WhoWeAreSection />
       <AlignEaseSection />
-      <WhatOurClientsSaySection />
-    </Box>
+      <WhatOurClientsSaySection /> */}
+    </>
   );
 }

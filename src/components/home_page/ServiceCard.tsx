@@ -36,12 +36,7 @@ export default function ServiceCard({
         {title}
       </Typography>
 
-      <Typography
-        fontFamily="Poppins"
-        color="#757575"
-      >
-        {children}
-      </Typography>
+      {children}
     </Stack>
   );
 }

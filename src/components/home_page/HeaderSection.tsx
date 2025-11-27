@@ -1,8 +1,12 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
+import { useContext } from "react";
 
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 import HomeHeaderBackgroundImage from "../../assets/webps/home_page/header_background.webp";
 
 export default function HeaderSection() {
+  const windowContext = useContext(WindowContext);
+
   return (
     <Box
       height={638}
@@ -11,7 +15,9 @@ export default function HeaderSection() {
     >
       <img
         style={{
-          width: "100%"
+          width: "100%",
+          height: "100%",
+          objectFit: "cover"
         }}
         src={HomeHeaderBackgroundImage}
       />
@@ -31,15 +37,21 @@ export default function HeaderSection() {
           width={610}
           position="absolute"
           right={66}
-          top={160.5}
+          top="50%"
+          textAlign={windowContext!.windowProps.width > Breakpoint.Tablet ? "start" : "center"}
+          sx={{
+            transform: "translateY(-50%)"
+          }}
         >
-          <Stack gap={20 / 8} mb={40 / 8}>
+          <Stack
+            gap={20 / 8}
+            mb={40 / 8}
+          >
             <Typography
               fontSize={50}
               color="#FFF"
               fontWeight={600}
               lineHeight={1.2}
-              fontFamily="Poppins"
             >
               <span style={{
                 color: "red"
@@ -59,7 +71,7 @@ export default function HeaderSection() {
             sx={{
               fontSize: 16,
               bgcolor: "#DB002B",
-              alignSelf: "flex-start",
+              alignSelf: windowContext!.windowProps.width > Breakpoint.Tablet ? "flex-start" : "center",
               width: 145,
               fontFamily: "Poppins"
             }}

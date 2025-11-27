@@ -10,8 +10,22 @@ import InstagramIcon from "../../assets/svgs/home_page/instagram.svg";
 import LocationIcon from "../../assets/svgs/home_page/location.svg";
 import PhoneIcon from "../../assets/svgs/home_page/phone.svg";
 import EmailIcon from "../../assets/svgs/home_page/email.svg";
+import { useContext } from "react";
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 export default function Footer() {
+  const windowContext = useContext(WindowContext);
+
+  const getBottomDescriptionWidth = (windowWidth: number): number => {
+    if (windowWidth > 844) {
+      return 390;
+    } else if (windowWidth > 762) {
+      return 290;
+    } else {
+      return 260;
+    }
+  };
+
   return (
     <Stack
       bgcolor="#000"
@@ -24,10 +38,13 @@ export default function Footer() {
       <Stack
         maxWidth={1440}
         width="80%"
-        direction="row"
+        direction={windowContext!.windowProps.width > Breakpoint.Laptop ? "row" : "column"}
         justifyContent="space-between"
+        gap={8}
       >
-        <Stack>
+        <Stack
+          flex={1}
+        >
           <img
             style={{
               width: 224,
@@ -37,7 +54,7 @@ export default function Footer() {
           />
 
           <Typography
-            width={390}
+            width={getBottomDescriptionWidth(windowContext!.windowProps.width)}
             mt={25 / 8}
             mb={43 / 8}
           >
@@ -74,61 +91,68 @@ export default function Footer() {
           </Stack>
         </Stack>
 
-        <Stack gap={24 / 8}>
-          <FooterTitle title="USEFUL LINKS" />
+        <Stack
+          flex={1}
+          direction={windowContext!.windowProps.width > Breakpoint.Tablet ? "row" : "column"}
+          justifyContent="space-between"
+          gap={windowContext!.windowProps.width > Breakpoint.Tablet ? 0 : 8}
+        >
+          <Stack gap={24 / 8}>
+            <FooterTitle title="USEFUL LINKS" />
 
-          <Stack
-            direction="column"
-            gap={1}
-          >
-            <FooterLink title="Home" />
-            <FooterLink title="Service" />
-            <FooterLink title="Booking" />
-            <FooterLink title="About Us" />
-            <FooterLink title="Contact Us" />
+            <Stack
+              direction="column"
+              gap={1}
+            >
+              <FooterLink title="Home" />
+              <FooterLink title="Service" />
+              <FooterLink title="Booking" />
+              <FooterLink title="About Us" />
+              <FooterLink title="Contact Us" />
+            </Stack>
           </Stack>
-        </Stack>
 
-        <Stack gap={24 / 8}>
-          <FooterTitle title="CONTACTS" />
+          <Stack gap={24 / 8}>
+            <FooterTitle title="CONTACTS" />
 
-          <Stack
-            direction="column"
-            gap={19 / 8}
-          >
-            <FooterIconLink
-              iconUrl={LocationIcon}
+            <Stack
+              direction="column"
+              gap={19 / 8}
             >
-              <Typography
-                fontSize={14}
-                color="#BDBDBD"
+              <FooterIconLink
+                iconUrl={LocationIcon}
               >
-                251 /A  Galle Road,<br />
-                Bamblapitiya
-              </Typography>
-            </FooterIconLink>
+                <Typography
+                  fontSize={14}
+                  color="#BDBDBD"
+                >
+                  251 /A  Galle Road,<br />
+                  Bamblapitiya
+                </Typography>
+              </FooterIconLink>
 
-            <FooterIconLink
-              iconUrl={PhoneIcon}
-            >
-              <Typography
-                fontSize={14}
-                color="#BDBDBD"
+              <FooterIconLink
+                iconUrl={PhoneIcon}
               >
-                +94 789 765 451
-              </Typography>
-            </FooterIconLink>
+                <Typography
+                  fontSize={14}
+                  color="#BDBDBD"
+                >
+                  +94 789 765 451
+                </Typography>
+              </FooterIconLink>
 
-            <FooterIconLink
-              iconUrl={EmailIcon}
-            >
-              <Typography
-                fontSize={14}
-                color="#BDBDBD"
+              <FooterIconLink
+                iconUrl={EmailIcon}
               >
-                alignease@gmail.com
-              </Typography>
-            </FooterIconLink>
+                <Typography
+                  fontSize={14}
+                  color="#BDBDBD"
+                >
+                  alignease@gmail.com
+                </Typography>
+              </FooterIconLink>
+            </Stack>
           </Stack>
         </Stack>
       </Stack>

@@ -43,7 +43,10 @@ export default function ServiceSection() {
           imageUrl={WheelImage}
           title="Tire Ordering"
         >
-          <Typography textAlign="center">
+          <Typography
+            color="#757575"
+            textAlign="center"
+          >
             Browse a wide range of tire brands, sizes, and models to suit your vehicle. With real-time stock updates, expert recommendations, and easy online ordering, you can schedule installation at your convenience — fast, simple, and reliable.
           </Typography>
         </ServiceCard>
@@ -52,7 +55,10 @@ export default function ServiceSection() {
           imageUrl={SteeringWheelImage}
           title="Wheel Balancing"
         >
-          <Typography textAlign="center">
+          <Typography
+            color="#757575"
+            textAlign="center"
+          >
             Eliminate vibrations and extend tire life with our precision wheel balancing service. Using industry-grade equipment, we ensure smoother rides, better handling, and improved tire performance.
           </Typography>
         </ServiceCard>
@@ -61,7 +67,10 @@ export default function ServiceSection() {
           imageUrl={OxigenTankImage}
           title="Nitrogen Filling"
         >
-          <Typography textAlign="center">
+          <Typography
+            color="#757575"
+            textAlign="center"
+          >
             Get improved fuel efficiency and tire life with our nitrogen filling service — safer, more stable, and better for performance, especially on long drives and varying road conditions
           </Typography>
         </ServiceCard>
