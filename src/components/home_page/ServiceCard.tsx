@@ -2,9 +2,11 @@ import { Stack, Typography } from "@mui/material";
 
 export default function ServiceCard({
   imageUrl,
+  title,
   children
 }: {
   imageUrl: string;
+  title: string;
   children: React.ReactNode;
 }) {
   return (
@@ -31,7 +33,7 @@ export default function ServiceCard({
         mb={30 / 8}
         fontFamily="Poppins"
       >
-        Tire Ordering
+        {title}
       </Typography>
 
       <Typography

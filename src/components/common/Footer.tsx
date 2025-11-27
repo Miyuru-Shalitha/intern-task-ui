@@ -1,13 +1,15 @@
 import { Box, Stack, Typography } from "@mui/material";
-import Logo from "../assets/pngs/logo.png";
-import FacebookIcon from "../assets/svgs/facebook.svg";
-import InstagramIcon from "../assets/svgs/instagram.svg";
+
 import FooterTitle from "./FooterTitle";
 import FooterLink from "./FooterLink";
-import LocationIcon from "../assets/svgs/location.svg";
-import PhoneIcon from "../assets/svgs/phone.svg";
-import EmailIcon from "../assets/svgs/email.svg";
 import FooterIconLink from "./FooterIconLink";
+
+import Logo from "../../assets/webps/common/logo.webp";
+import FacebookIcon from "../../assets/svgs/home_page/facebook.svg";
+import InstagramIcon from "../../assets/svgs/home_page/instagram.svg";
+import LocationIcon from "../../assets/svgs/home_page/location.svg";
+import PhoneIcon from "../../assets/svgs/home_page/phone.svg";
+import EmailIcon from "../../assets/svgs/home_page/email.svg";
 
 export default function Footer() {
   return (

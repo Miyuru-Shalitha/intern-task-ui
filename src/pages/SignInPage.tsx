@@ -1,6 +1,7 @@
 import { Box, Button, Snackbar, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import SignInImage from "../assets/webps/sign_in_page/sign_in_image.png";
 
 export default function SignInPage() {

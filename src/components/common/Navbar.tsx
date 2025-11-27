@@ -1,8 +1,10 @@
 import { Button, Stack } from "@mui/material";
-import Logo from "../assets/pngs/logo.png";
-import NavListItem from "./NavListItem";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import NavListItem from "./NavListItem";
+
+import Logo from "../../assets/webps/common/logo.webp";
 
 // TODO(Miyuru): Nav item paths should be replaced witih correct paths.
 const navItems = [
@@ -46,7 +48,7 @@ export default function Navbar() {
       paddingLeft={34 / 8}
       paddingRight={40 / 8}
     >
-      <img src={Logo} />
+      <img src={Logo} width={224} />
 
       <Stack
         direction="row"

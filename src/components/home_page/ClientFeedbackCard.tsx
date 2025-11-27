@@ -1,6 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
-import StarActiveIcon from "../assets/svgs/star-active.svg";
-import StarInActiveIcon from "../assets/svgs/star-inactive.svg";
+
+import StarActiveIcon from "../../assets/svgs/home_page/star_active.svg";
+import StarInActiveIcon from "../../assets/svgs/home_page/star_inactive.svg";
 
 export default function ClientFeedbackCard({
   imageUrl,
