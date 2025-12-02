@@ -4,8 +4,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import { CustomThemeContext } from "../../context/CustomThemeContext";
 import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
-// TODO(Miyuru): I just add the png instead of webp, bacase of the internet issue.
-//               Convert that to webp and import that instead.
+// TODO(Miyuru): Convert this to webp and import that instead.
 import HeaderImage from "../../../../Temporary/Group 14.png";
 
 export default function HeaderSection() {

@@ -2,8 +2,10 @@ import { Alert, Box, Button, Snackbar, Stack, Typography } from "@mui/material";
 import { useContext, useId, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import SignInImage from "../assets/webps/sign_in_page/sign_in_image.png";
 import { WindowContext } from "../context/WindowContext";
+import { CustomThemeContext } from "../context/CustomThemeContext";
+
+import SignInImage from "../assets/webps/sign_in_page/sign_in_image.png";
 
 export default function SignInPage() {
   const [signInFormData, setSignInFormData] = useState({
@@ -16,6 +18,7 @@ export default function SignInPage() {
   const [alertSevirity, setAlertSevirity] = useState<"success" | "warning">("success");
   const [isLoading, setIsLoading] = useState(false);
   const windowContext = useContext(WindowContext);
+  const customeThemeContext = useContext(CustomThemeContext);
   const emailId = useId();
   const passwordId = useId();
 
@@ -207,7 +210,7 @@ export default function SignInPage() {
               fullWidth
               sx={{
                 fontSize: 20,
-                bgcolor: "#DB002B"
+                bgcolor: customeThemeContext!.colors.secondary
               }}
             >
               Proceed
