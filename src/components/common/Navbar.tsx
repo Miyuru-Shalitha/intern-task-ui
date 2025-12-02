@@ -46,7 +46,7 @@ export default function Navbar() {
   const windowContext = useContext(WindowContext);
   const customThemecontext = useContext(CustomThemeContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  
+
   // NOTE(Miyuru): Set the nav item index when the route is loaded.
   useEffect(() => {
     navItems.forEach((navItem: INavItem, index: number) => {
@@ -164,6 +164,10 @@ export default function Navbar() {
       </Drawer>
 
       <Stack
+        position="sticky"
+        left={0}
+        top={0}
+        zIndex={1}
         direction="row"
         alignItems="center"
         justifyContent="space-between"
