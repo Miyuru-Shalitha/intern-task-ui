@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import SignInPage from "./pages/SignInPage";
-import HomePage from "./pages/HomePage";
-import Layout from "./components/common/Layout";
 import WindowContextProvider from "./context/WindowContext";
 import CustomThemeContextProvider from "./context/CustomThemeContext";
+import Layout from "./components/common/Layout";
+import SignInPage from "./pages/SignInPage";
+import HomePage from "./pages/HomePage";
+import ServicePage from "./pages/ServicePage";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
 
             <Route path="" element={<Layout />}>
               <Route index element={<HomePage />} />
+              <Route path="/service" element={<ServicePage />} />
             </Route>
           </Routes>
         </WindowContextProvider>

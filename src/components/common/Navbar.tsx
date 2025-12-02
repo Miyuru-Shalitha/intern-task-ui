@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Box, Button, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
@@ -22,7 +22,7 @@ const navItems: INavItem[] = [
   },
   {
     title: "SERVICES",
-    to: "/"
+    to: "/service"
   },
   {
     title: "BOOKINGS",
@@ -46,6 +46,15 @@ export default function Navbar() {
   const windowContext = useContext(WindowContext);
   const customThemecontext = useContext(CustomThemeContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  
+  // NOTE(Miyuru): Set the nav item index when the route is loaded.
+  useEffect(() => {
+    navItems.forEach((navItem: INavItem, index: number) => {
+      if (navItem.to === window.location.pathname) {
+        setActiveNavItem(index);
+      }
+    });
+  }, []);
 
   const handleClickLogIn = () => {
     navigate("/sign-in");
