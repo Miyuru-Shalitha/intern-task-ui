@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
+import { WindowContext } from "../../context/WindowContext";
 import ProductCard from "./ProductCard";
 
 // TODO(Miyuru): Convert these to webp and import those instead.
@@ -11,6 +13,8 @@ import prodct1Image5 from "../../../../Temporary/product_5.png";
 import prodct1Image6 from "../../../../Temporary/product_6.png";
 
 export default function ProductSection() {
+  const windowContext = useContext(WindowContext);
+
   return (
     <Box
       display="flex"
@@ -35,7 +39,7 @@ export default function ProductSection() {
           direction="row"
           flexWrap="wrap"
           justifyContent="center"
-          gap={48 / 8}
+          gap={windowContext!.windowProps.width > 835 ? 48 / 8 : 28 / 8}
         >
           <ProductCard
             imageUrl={prodct1Image1}

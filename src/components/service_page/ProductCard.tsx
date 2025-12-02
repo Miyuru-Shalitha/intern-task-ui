@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 
 import { CustomThemeContext } from "../../context/CustomThemeContext";
+import { WindowContext } from "../../context/WindowContext";
 
 export default function ProductCard({
   imageUrl,
@@ -17,10 +18,19 @@ export default function ProductCard({
   price: number;
 }) {
   const customThemeContext = useContext(CustomThemeContext);
+  const windowContext = useContext(WindowContext);
+
+  const getContainerMaxWidth = (windowWidth: number): number => {
+    if (windowWidth > 835) {
+      return 360;
+    } else {
+      return 300;
+    }
+  };
 
   return (
     <Box
-      maxWidth={360}
+      maxWidth={getContainerMaxWidth(windowContext!.windowProps.width)}
       // height={473}
       borderRadius={20 / 8}
       overflow="hidden"
