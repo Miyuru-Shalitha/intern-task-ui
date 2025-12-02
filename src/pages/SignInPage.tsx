@@ -30,7 +30,7 @@ export default function SignInPage() {
       setAlertSevirity("warning");
       showAlertPopUp("Please enter an email address!");
       setIsLoading(false);
-    } else if (!signInFormData.email.includes("@")) {
+    } else if (!signInFormData.email.includes("@") || !signInFormData.email.includes(".com")) {
       setAlertSevirity("warning");
       showAlertPopUp("Please enter a valid email address!");
       setIsLoading(false);

@@ -1,8 +1,8 @@
-import React, { Fragment, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Stack, Typography } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
 
+import { Box, Button, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
 import NavListItem from "./NavListItem";
 import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
