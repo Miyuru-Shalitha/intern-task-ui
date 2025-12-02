@@ -49,7 +49,7 @@ export default function WhatOurClientsSaySection() {
           alignItems="center"
           mt={80 / 8}
         >
-          <Box
+          {/* <Box
             width={50}
             height={50}
             display="flex"
@@ -67,7 +67,7 @@ export default function WhatOurClientsSaySection() {
               }}
               src={BackwardArrowIcon}
             />
-          </Box>
+          </Box> */}
 
           <Stack
             maxWidth={1440}
@@ -97,7 +97,7 @@ export default function WhatOurClientsSaySection() {
             }
           </Stack>
 
-          <Box
+          {/* <Box
             width={50}
             height={50}
             display="flex"
@@ -115,7 +115,7 @@ export default function WhatOurClientsSaySection() {
               }}
               src={ForwardArrowIcon}
             />
-          </Box>
+          </Box> */}
         </Stack>
       </Stack>
     </Stack>

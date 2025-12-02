@@ -49,6 +49,7 @@ export default function HeaderSection() {
           <Stack
             gap={20 / 8}
             mb={40 / 8}
+            px={windowContext!.windowProps.width > Breakpoint.Tablet ? 0 : 16 / 8}
           >
             <Typography
               fontSize={windowContext!.windowProps.width > Breakpoint.Tablet ? 50 : 40}
