@@ -8,19 +8,29 @@ import BrakeImage from "../../assets/svgs/home_page/brake.svg";
 import CarRepairImage from "../../assets/svgs/home_page/car_repair.svg";
 import RepairShopImage from "../../assets/svgs/home_page/repair_shop.svg";
 import FrontCarImage from "../../assets/svgs/home_page/front_car.svg";
+import { useContext } from "react";
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 export default function WhoWeAreSection() {
+  const windowContext = useContext(WindowContext);
+
   return (
     <Stack
       pt={133 / 8}
       alignItems="center"
     >
       <Stack
-        direction="row"
-        maxWidth={1440}>
-        <Box flex={1}>
+        direction={windowContext!.windowProps.width > Breakpoint.Laptop ? "row" : "column"}
+        maxWidth={1440}
+        px={32 / 8}
+      >
+        <Box
+          flex={1}
+          maxWidth={668}
+          alignSelf="center"
+        >
           <img
-            width={668}
+            width="100%"
             src={ReparingCarImage}
           />
         </Box>
@@ -62,16 +72,28 @@ export default function WhoWeAreSection() {
           </Typography>
 
           <Stack
-            direction="row"
-            gap={31 / 8}
+            direction={windowContext!.windowProps.width > 630 ? "row" : "column"}
+            gap={windowContext!.windowProps.width > Breakpoint.MobileLarge ? 31 / 8 : 16 / 8}
             justifyContent="center"
+            alignItems={windowContext!.windowProps.width > 630 ? undefined : "center"}
             mt={25 / 8}
           >
-            <WhoWeAreIcon imageUrl={DamperImage} />
-            <WhoWeAreIcon imageUrl={BrakeImage} />
-            <WhoWeAreIcon imageUrl={CarRepairImage} />
-            <WhoWeAreIcon imageUrl={RepairShopImage} />
-            <WhoWeAreIcon imageUrl={FrontCarImage} />
+            <Stack
+              direction="row"
+              gap={windowContext!.windowProps.width > Breakpoint.MobileLarge ? 31 / 8 : 16 / 8}
+            >
+              <WhoWeAreIcon imageUrl={DamperImage} />
+              <WhoWeAreIcon imageUrl={BrakeImage} />
+              <WhoWeAreIcon imageUrl={CarRepairImage} />
+            </Stack>
+
+            <Stack
+              direction="row"
+              gap={windowContext!.windowProps.width > Breakpoint.MobileLarge ? 31 / 8 : 16 / 8}
+            >
+              <WhoWeAreIcon imageUrl={RepairShopImage} />
+              <WhoWeAreIcon imageUrl={FrontCarImage} />
+            </Stack>
           </Stack>
         </Stack>
       </Stack>

@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import { Stack, Typography } from "@mui/material";
+
+import { CustomThemeContext } from "../../context/CustomThemeContext";
 
 export default function ServiceCard({
   imageUrl,
@@ -9,10 +12,12 @@ export default function ServiceCard({
   title: string;
   children: React.ReactNode;
 }) {
+  const customThemeContext = useContext(CustomThemeContext);
+
   return (
     <Stack
       width={295}
-      bgcolor="#E9E9E9"
+      bgcolor={customThemeContext!.colors.surface}
       px={32 / 8}
       pt={37 / 8}
       pb={33 / 8}
@@ -36,12 +41,7 @@ export default function ServiceCard({
         {title}
       </Typography>
 
-      <Typography
-        fontFamily="Poppins"
-        color="#757575"
-      >
-        {children}
-      </Typography>
+      {children}
     </Stack>
   );
 }

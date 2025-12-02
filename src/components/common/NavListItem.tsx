@@ -1,5 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { WindowContext } from "../../context/WindowContext";
 
 export default function NavListItem({
   to,
@@ -12,6 +14,16 @@ export default function NavListItem({
   onClick: () => void;
   isActive?: boolean;
 }) {
+  const windowContext = useContext(WindowContext);
+
+  const getFontSize = (windowWidth: number): number => {
+    if (windowWidth > 1120) {
+      return 16;
+    } else {
+      return 12;
+    }
+  };
+
   return (
     <Stack
       alignItems="center"
@@ -25,7 +37,12 @@ export default function NavListItem({
         color: "#FFF"
       }}
     >
-      <Typography fontWeight={600}>{title}</Typography>
+      <Typography
+        fontSize={getFontSize(windowContext!.windowProps.width)}
+        fontWeight={600}
+      >
+        {title}
+      </Typography>
 
       {isActive &&
         <Box

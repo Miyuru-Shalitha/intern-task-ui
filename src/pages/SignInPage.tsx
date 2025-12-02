@@ -1,8 +1,9 @@
-import { Box, Button, Snackbar, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { useState } from "react";
+import { Alert, Box, Button, Snackbar, Stack, Typography } from "@mui/material";
+import { useContext, useId, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import SignInImage from "../assets/webps/sign_in_page/sign_in_image.png";
+import { WindowContext } from "../context/WindowContext";
 
 export default function SignInPage() {
   const [signInFormData, setSignInFormData] = useState({
@@ -10,39 +11,45 @@ export default function SignInPage() {
     password: ""
   });
   const navigate = useNavigate();
-  const theme = useTheme();
-  const sm = useMediaQuery(theme.breakpoints.down("sm"));
-  const md = useMediaQuery(theme.breakpoints.down("md"));
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [alertSevirity, setAlertSevirity] = useState<"success" | "warning">("success");
   const [isLoading, setIsLoading] = useState(false);
+  const windowContext = useContext(WindowContext);
+  const emailId = useId();
+  const passwordId = useId();
 
   const handleSignIn = () => {
     setIsLoading(true);
 
+    // NOTE(Miyuru): Maybe we do not need to check the length of the email and 
+    //               password weather it is zero or not, because if any of those 
+    //               are zero, "Proceed" button is disabled. But I check those
+    //               anyways for extra safety.
     if (signInFormData.email.length === 0) {
-      setAlertMessage("Please enter an email address!");
-      setShowAlert(true);
+      setAlertSevirity("warning");
+      showAlertPopUp("Please enter an email address!");
       setIsLoading(false);
-    } else if (!signInFormData.email.includes("@")) {
-      setAlertMessage("Please enter a valid email address!");
-      setShowAlert(true);
+    } else if (!signInFormData.email.includes("@") || !signInFormData.email.includes(".com")) {
+      setAlertSevirity("warning");
+      showAlertPopUp("Please enter a valid email address!");
       setIsLoading(false);
     }
     else if (signInFormData.password.length === 0) {
-      setAlertMessage("Please enter a password!");
-      setShowAlert(true);
+      setAlertSevirity("warning");
+      showAlertPopUp("Please enter a password!");
       setIsLoading(false);
     } else if (signInFormData.password.length < 8) {
-      setAlertMessage("Password must be at least 8 characters!");
-      setShowAlert(true);
+      setAlertSevirity("warning");
+      showAlertPopUp("Password must be at least 8 characters!");
       setIsLoading(false);
     } else {
       setSignInFormData({
         email: "",
         password: ""
       });
-      setAlertMessage("Sign in successful!");
+      setAlertSevirity("success");
+      showAlertPopUp("Sign in successful!");
       setShowAlert(true);
 
       // TODO(Miyuru): This is just for simulating a network delay.
@@ -51,6 +58,35 @@ export default function SignInPage() {
         setIsLoading(false);
         navigate("/", { replace: true });
       }, 3000);
+    }
+  };
+
+  const showAlertPopUp = (message: string) => {
+    setAlertMessage(message);
+    setShowAlert(true);
+
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+  };
+
+  const getFormPadding = () => {
+    if (windowContext!.windowProps.width < 420) {
+      return 2;
+    } else if (windowContext!.windowProps.width < 640) {
+      return 4;
+    } else {
+      return 8;
+    }
+  };
+
+  const getFormHorizontalMargin = () => {
+    if (windowContext!.windowProps.width < 420) {
+      return 2;
+    } else if (windowContext!.windowProps.width < 640) {
+      return 8;
+    } else {
+      return 0;
     }
   };
 
@@ -63,8 +99,11 @@ export default function SignInPage() {
         }}
         open={showAlert}
         onClose={() => setShowAlert(false)}
-        message={alertMessage}
-      />
+      >
+        <Alert severity={alertSevirity}>
+          {alertMessage}
+        </Alert>
+      </Snackbar>
 
       <Box
         display="flex"
@@ -79,7 +118,8 @@ export default function SignInPage() {
           alignItems="center"
         >
           <Box
-            padding={!sm ? 8 : 4}
+            p={getFormPadding()}
+            mx={getFormHorizontalMargin()}
             sx={{
               border: 3,
               borderColor: "#D8D8D8",
@@ -109,7 +149,7 @@ export default function SignInPage() {
             >
               <Stack gap={12 / 8}>
                 <label
-                  htmlFor="sign-in-email"
+                  htmlFor={emailId}
                   style={{
                     fontSize: 16,
                     fontWeight: 600
@@ -125,7 +165,7 @@ export default function SignInPage() {
                     height: 40,
                     padding: 8
                   }}
-                  id="sign-in-email"
+                  id={emailId}
                   type="email"
                   value={signInFormData.email}
                   onChange={(e) => setSignInFormData({ ...signInFormData, email: e.target.value })}
@@ -134,7 +174,7 @@ export default function SignInPage() {
 
               <Stack gap={12 / 8}>
                 <label
-                  htmlFor="sign-in-password"
+                  htmlFor={passwordId}
                   style={{
                     fontSize: 16,
                     fontWeight: 600
@@ -150,7 +190,7 @@ export default function SignInPage() {
                     height: 40,
                     padding: 8
                   }}
-                  id="sign-in-password"
+                  id={passwordId}
                   type="password"
                   value={signInFormData.password}
                   onChange={(e) => setSignInFormData({ ...signInFormData, password: e.target.value })}
@@ -159,6 +199,7 @@ export default function SignInPage() {
             </Stack>
 
             <Button
+              disabled={!(signInFormData.email.length > 0 && signInFormData.password.length > 0)}
               loading={isLoading}
               onClick={handleSignIn}
               variant="contained"
@@ -183,7 +224,7 @@ export default function SignInPage() {
           </Box>
         </Box>
 
-        {!md &&
+        {windowContext!.windowProps.width > 1440 &&
           <Box flex={1}>
             <img
               src={SignInImage}
