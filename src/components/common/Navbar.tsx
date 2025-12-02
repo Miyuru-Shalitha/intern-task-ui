@@ -1,12 +1,13 @@
-import { Button, IconButton, Menu, Stack } from "@mui/material";
-import { useContext, useEffect, useId, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Box, Button, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Stack, Typography } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 
 import NavListItem from "./NavListItem";
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 import Logo from "../../assets/webps/common/logo.webp";
-import { Breakpoint, WindowContext } from "../../context/WindowContext";
+import { CustomThemeContext } from "../../context/CustomThemeContext";
 
 interface INavItem {
   title: string;
@@ -43,13 +44,15 @@ export default function Navbar() {
   const [activeNavItem, setActiveNavItem] = useState(0);
   const navigate = useNavigate();
   const windowContext = useContext(WindowContext);
+  const customThemecontext = useContext(CustomThemeContext);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleClickLogIn = () => {
     navigate("/sign-in");
   };
 
   const handleClickSignUp = () => { };
-  
+
   const getContainerLeftPadding = (windowWidth: number): number => {
     if (windowWidth > 830) {
       return 34 / 8;
@@ -57,7 +60,7 @@ export default function Navbar() {
       return 17 / 8;
     }
   };
-  
+
   const getContainerRightPadding = (windowWidth: number): number => {
     if (windowWidth > 830) {
       return 30 / 8;
@@ -103,81 +106,131 @@ export default function Navbar() {
   };
 
   return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
-      bgcolor="#000"
-      paddingLeft={getContainerLeftPadding(windowContext!.windowProps.width)}
-      paddingRight={getContainerRightPadding(windowContext!.windowProps.width)}
-    >
-      <img
-        src={Logo}
-        width={getLogoWidth(windowContext!.windowProps.width)}
-      />
-
-      {windowContext!.windowProps.width > Breakpoint.Tablet ?
-        <Stack
-          flex={1}
-          direction="row"
-          alignItems="center"
-          marginLeft="auto"
-          gap={getGapBetweenNavItemsAndButtons(windowContext!.windowProps.width)}
+    <>
+      <Drawer
+        anchor="right"
+        open={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+      >
+        <Box
+          bgcolor={customThemecontext!.colors.black}
+          height="100%"
         >
+          <List
+            sx={{
+              color: customThemecontext!.colors.white,
+            }}
+          >
+            <ListItem>
+              <ListItemButton>
+                <ListItemText>Home</ListItemText>
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem>
+              <ListItemButton>
+                <ListItemText>Services</ListItemText>
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem>
+              <ListItemButton>
+                <ListItemText>Bookings</ListItemText>
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem>
+              <ListItemButton>
+                <ListItemText>About Us</ListItemText>
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem>
+              <ListItemButton>
+                <ListItemText>Contact Us</ListItemText>
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Box>
+      </Drawer>
+
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        bgcolor={customThemecontext!.colors.primary}
+        paddingLeft={getContainerLeftPadding(windowContext!.windowProps.width)}
+        paddingRight={getContainerRightPadding(windowContext!.windowProps.width)}
+      >
+        <img
+          src={Logo}
+          width={getLogoWidth(windowContext!.windowProps.width)}
+        />
+
+        {windowContext!.windowProps.width > Breakpoint.Tablet ?
           <Stack
             flex={1}
             direction="row"
-            justifyContent="flex-end"
-            gap={getNavbarItemGap(windowContext!.windowProps.width)}
-            color="#FFF"
-            sx={{
-              transform: "translateY(-5px)"
-            }}
+            alignItems="center"
+            marginLeft="auto"
+            gap={getGapBetweenNavItemsAndButtons(windowContext!.windowProps.width)}
           >
-            {navItems.map((item, index) =>
-              <NavListItem
-                key={index}
-                title={item.title}
-                onClick={() => setActiveNavItem(index)}
-                isActive={index === activeNavItem} to={item.to}
-              />
-            )}
-          </Stack>
-
-          <Stack direction="row" gap={7 / 8}>
-            <Button
-              size={getButtonSize(windowContext!.windowProps.width)}
-              onClick={handleClickLogIn}
-              variant="outlined"
-              disableElevation
+            <Stack
+              flex={1}
+              direction="row"
+              justifyContent="flex-end"
+              gap={getNavbarItemGap(windowContext!.windowProps.width)}
+              color={customThemecontext!.colors.white}
               sx={{
-                color: "#FFF",
-                border: 1,
-                borderColor: "#FFF",
-                borderRadius: 10 / 8
+                transform: "translateY(-5px)"
               }}
             >
-              Log In
-            </Button>
+              {navItems.map((item, index) =>
+                <NavListItem
+                  key={index}
+                  title={item.title}
+                  onClick={() => setActiveNavItem(index)}
+                  isActive={index === activeNavItem} to={item.to}
+                />
+              )}
+            </Stack>
 
-            <Button
-              size={getButtonSize(windowContext!.windowProps.width)}
-              onClick={handleClickSignUp}
-              variant="contained"
-              disableElevation
-              sx={{
-                bgcolor: "#DB002B"
-              }}
-            >
-              Sign Up
-            </Button>
+            <Stack direction="row" gap={7 / 8}>
+              <Button
+                size={getButtonSize(windowContext!.windowProps.width)}
+                onClick={handleClickLogIn}
+                variant="outlined"
+                disableElevation
+                sx={{
+                  color: customThemecontext!.colors.white,
+                  border: 1,
+                  borderColor: customThemecontext!.colors.white,
+                  borderRadius: 10 / 8
+                }}
+              >
+                Log In
+              </Button>
+
+              <Button
+                size={getButtonSize(windowContext!.windowProps.width)}
+                onClick={handleClickSignUp}
+                variant="contained"
+                disableElevation
+                sx={{
+                  bgcolor: customThemecontext!.colors.secondary,
+                  color: customThemecontext!.colors.white
+                }}
+              >
+                Sign Up
+              </Button>
+            </Stack>
           </Stack>
-        </Stack>
-        :
-        <IconButton onClick={() => { }}>
-          <MenuIcon color="secondary" />
-        </IconButton>
-      }
-    </Stack>
+          :
+          <IconButton onClick={() => setIsDrawerOpen(true)}>
+            <MenuIcon color="secondary" />
+          </IconButton>
+        }
+      </Stack>
+    </>
   );
 }

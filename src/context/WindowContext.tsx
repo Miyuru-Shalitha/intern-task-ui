@@ -11,6 +11,8 @@ export enum Breakpoint {
   LaptopLarge = 1440,
 }
 
+// NOTE(Miyuru): I wrapped this into an interface, so that I can put 
+//               more attributes if I wanted.
 export interface IWindowProp {
   width: number;
 }
@@ -27,7 +29,7 @@ export default function WindowContextProvider({
 }: {
   children: ReactNode
 }) {
-  const [windowProps, setWindowProps] = useState({ width: 0 });
+  const [windowProps, setWindowProps] = useState({ width: window.innerWidth });
 
   useEffect(() => {
     const checkWindowWidth = () => {

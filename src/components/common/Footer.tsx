@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
 import FooterTitle from "./FooterTitle";
 import FooterLink from "./FooterLink";
 import FooterIconLink from "./FooterIconLink";
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
+import { CustomThemeContext } from "../../context/CustomThemeContext";
 
 import Logo from "../../assets/webps/common/logo.webp";
 import FacebookIcon from "../../assets/svgs/home_page/facebook.svg";
@@ -10,26 +13,15 @@ import InstagramIcon from "../../assets/svgs/home_page/instagram.svg";
 import LocationIcon from "../../assets/svgs/home_page/location.svg";
 import PhoneIcon from "../../assets/svgs/home_page/phone.svg";
 import EmailIcon from "../../assets/svgs/home_page/email.svg";
-import { useContext } from "react";
-import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 export default function Footer() {
   const windowContext = useContext(WindowContext);
-
-  const getBottomDescriptionWidth = (windowWidth: number): number => {
-    if (windowWidth > 844) {
-      return 390;
-    } else if (windowWidth > 762) {
-      return 290;
-    } else {
-      return 260;
-    }
-  };
+  const customThemeContext = useContext(CustomThemeContext);
 
   return (
     <Stack
-      bgcolor="#000"
-      color="#FFF"
+      bgcolor={customThemeContext!.colors.black}
+      color={customThemeContext!.colors.white}
       direction="row"
       justifyContent="center"
       pt={56 / 8}
@@ -54,7 +46,7 @@ export default function Footer() {
           />
 
           <Typography
-            width={getBottomDescriptionWidth(windowContext!.windowProps.width)}
+            width={windowContext!.windowProps.width > Breakpoint.Laptop ? 390 : undefined}
             mt={25 / 8}
             mb={43 / 8}
           >
@@ -78,7 +70,7 @@ export default function Footer() {
                 width: 30,
                 height: 30
               }}
-              bgcolor="#FFF"
+              bgcolor={customThemeContext!.colors.white}
               width={30}
               height={30}
               borderRadius={1000}

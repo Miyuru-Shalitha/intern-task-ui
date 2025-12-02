@@ -1,26 +1,31 @@
 import { Box, Stack, Typography } from "@mui/material";
 
 import AlignEaseBackgroundImage from "../../assets/webps/home_page/align_ease_background.webp";
+import { useContext } from "react";
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 export default function AlignEaseSection() {
+  const windowContext = useContext(WindowContext);
+
   return (
     <Stack
       mt={172 / 8}
+      pt={79 / 8}
+      pb={59 / 8}
+      px={32 / 8}
       bgcolor="#000"
       color="#FFF"
       direction="row"
       justifyContent="center"
-      pt={79 / 8}
-      pb={59 / 8}
     >
       <Box
         flex={1}
         display="flex"
-        justifyContent="flex-end"
+        justifyContent={windowContext!.windowProps.width > 1120 ? "flex-end" : "flex-start"}
       >
         <Stack
           gap={28 / 8}
-          maxWidth={552}
+          maxWidth={windowContext!.windowProps.width > 1120 ? 552 : undefined}
         >
           <Typography
             fontFamily="Poppins"
@@ -40,13 +45,15 @@ export default function AlignEaseSection() {
       </Box>
 
       <Stack
+        display={windowContext!.windowProps.width > 1120 ? "flex" : "none"}
         position="relative"
         justifyContent="center"
         flex={1}
+        maxWidth={755}
       >
         <img
           style={{
-            width: 755,
+            width: "100%",
             position: "absolute",
             bottom: -59, // NOTE(Miyuru): This is the exact bottom padding of the top most parent element.
           }}

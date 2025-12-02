@@ -6,10 +6,11 @@ import WheelImage from "../../assets/webps/home_page/wheel.webp";
 import SteeringWheelImage from "../../assets/webps/home_page/steering_wheel.webp";
 import OxigenTankImage from "../../assets/webps/home_page/oxygen_tank.webp";
 import CarEngineImage from "../../assets/webps/home_page/car_engine.webp";
+import { useContext } from "react";
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 export default function ServiceSection() {
-  const theme = useTheme();
-  const lg = useMediaQuery(theme.breakpoints.down("lg"));
+  const windowContext = useContext(WindowContext);
 
   return (
     <Stack alignItems="center">
@@ -30,59 +31,73 @@ export default function ServiceSection() {
           color="#000"
           fontWeight={600}
           fontSize={25}
+          textAlign="center"
         >
           Your One-Stop Wheel & Tire Service Center
         </Typography>
       </Stack>
 
       <Stack
-        direction={!lg ? "row" : "column"}
+        direction={windowContext!.windowProps.width > 1400 ? "row" : "column"}
         gap={19 / 8}
       >
-        <ServiceCard
-          imageUrl={WheelImage}
-          title="Tire Ordering"
+        <Stack
+          direction={windowContext!.windowProps.width > Breakpoint.Tablet ? "row" : "column"}
+          gap={19 / 8}
         >
-          <Typography
-            color="#757575"
-            textAlign="center"
+          <ServiceCard
+            imageUrl={WheelImage}
+            title="Tire Ordering"
           >
-            Browse a wide range of tire brands, sizes, and models to suit your vehicle. With real-time stock updates, expert recommendations, and easy online ordering, you can schedule installation at your convenience — fast, simple, and reliable.
-          </Typography>
-        </ServiceCard>
+            <Typography
+              color="#757575"
+              textAlign="center"
+            >
+              Browse a wide range of tire brands, sizes, and models to suit your vehicle. With real-time stock updates, expert recommendations, and easy online ordering, you can schedule installation at your convenience — fast, simple, and reliable.
+            </Typography>
+          </ServiceCard>
 
-        <ServiceCard
-          imageUrl={SteeringWheelImage}
-          title="Wheel Balancing"
-        >
-          <Typography
-            color="#757575"
-            textAlign="center"
+          <ServiceCard
+            imageUrl={SteeringWheelImage}
+            title="Wheel Balancing"
           >
-            Eliminate vibrations and extend tire life with our precision wheel balancing service. Using industry-grade equipment, we ensure smoother rides, better handling, and improved tire performance.
-          </Typography>
-        </ServiceCard>
+            <Typography
+              color="#757575"
+              textAlign="center"
+            >
+              Eliminate vibrations and extend tire life with our precision wheel balancing service. Using industry-grade equipment, we ensure smoother rides, better handling, and improved tire performance.
+            </Typography>
+          </ServiceCard>
+        </Stack>
 
-        <ServiceCard
-          imageUrl={OxigenTankImage}
-          title="Nitrogen Filling"
+        <Stack
+          direction={windowContext!.windowProps.width > Breakpoint.Tablet ? "row" : "column"}
+          gap={19 / 8}
         >
-          <Typography
-            color="#757575"
-            textAlign="center"
+          <ServiceCard
+            imageUrl={OxigenTankImage}
+            title="Nitrogen Filling"
           >
-            Get improved fuel efficiency and tire life with our nitrogen filling service — safer, more stable, and better for performance, especially on long drives and varying road conditions
-          </Typography>
-        </ServiceCard>
+            <Typography
+              color="#757575"
+              textAlign="center"
+            >
+              Get improved fuel efficiency and tire life with our nitrogen filling service — safer, more stable, and better for performance, especially on long drives and varying road conditions
+            </Typography>
+          </ServiceCard>
 
-        <ServiceCard
-          imageUrl={CarEngineImage}
-          title="Part Replacement"
-        >
-          <Typography textAlign="center">
-            We offer genuine part replacements for tires, valves, sensors, and more. With transparent pricing and expert installation, we keep your vehicle safe, reliable, and ready for the road
-          </Typography>
-        </ServiceCard>
+          <ServiceCard
+            imageUrl={CarEngineImage}
+            title="Part Replacement"
+          >
+            <Typography
+              color="#757575"
+              textAlign="center"
+            >
+              We offer genuine part replacements for tires, valves, sensors, and more. With transparent pricing and expert installation, we keep your vehicle safe, reliable, and ready for the road
+            </Typography>
+          </ServiceCard>
+        </Stack>
       </Stack>
     </Stack>
   );

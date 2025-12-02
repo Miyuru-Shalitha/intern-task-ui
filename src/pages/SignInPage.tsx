@@ -1,4 +1,4 @@
-import { Box, Button, Snackbar, Stack, Typography } from "@mui/material";
+import { Alert, Box, Button, Snackbar, Stack, Typography } from "@mui/material";
 import { useContext, useId, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,6 +13,7 @@ export default function SignInPage() {
   const navigate = useNavigate();
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [alertSevirity, setAlertSevirity] = useState<"success" | "warning">("success");
   const [isLoading, setIsLoading] = useState(false);
   const windowContext = useContext(WindowContext);
   const emailId = useId();
@@ -26,16 +27,20 @@ export default function SignInPage() {
     //               are zero, "Proceed" button is disabled. But I check those
     //               anyways for extra safety.
     if (signInFormData.email.length === 0) {
+      setAlertSevirity("warning");
       showAlertPopUp("Please enter an email address!");
       setIsLoading(false);
     } else if (!signInFormData.email.includes("@")) {
+      setAlertSevirity("warning");
       showAlertPopUp("Please enter a valid email address!");
       setIsLoading(false);
     }
     else if (signInFormData.password.length === 0) {
+      setAlertSevirity("warning");
       showAlertPopUp("Please enter a password!");
       setIsLoading(false);
     } else if (signInFormData.password.length < 8) {
+      setAlertSevirity("warning");
       showAlertPopUp("Password must be at least 8 characters!");
       setIsLoading(false);
     } else {
@@ -43,6 +48,7 @@ export default function SignInPage() {
         email: "",
         password: ""
       });
+      setAlertSevirity("success");
       showAlertPopUp("Sign in successful!");
       setShowAlert(true);
 
@@ -93,8 +99,11 @@ export default function SignInPage() {
         }}
         open={showAlert}
         onClose={() => setShowAlert(false)}
-        message={alertMessage}
-      />
+      >
+        <Alert severity={alertSevirity}>
+          {alertMessage}
+        </Alert>
+      </Snackbar>
 
       <Box
         display="flex"

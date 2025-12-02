@@ -10,7 +10,7 @@ export default function DebugWindowPropsDisplay() {
         backgroundColor: "#0005",
         color: "#FFF",
         border: "1px solid #FFF",
-        position: "absolute",
+        position: "fixed",
         right: 0,
         top: 0,
         zIndex: 1000,

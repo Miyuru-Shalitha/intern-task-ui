@@ -8,10 +8,10 @@ export default function HomePage() {
   return (
     <>
       <HeaderSection />
-      {/* <ServiceSection />
+      <ServiceSection />
       <WhoWeAreSection />
       <AlignEaseSection />
-      <WhatOurClientsSaySection /> */}
+      <WhatOurClientsSaySection />
     </>
   );
 }

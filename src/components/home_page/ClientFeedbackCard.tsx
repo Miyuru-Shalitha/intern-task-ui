@@ -13,7 +13,10 @@ export default function ClientFeedbackCard({
   description: string;
 }) {
   return (
-    <Stack width={354}>
+    <Stack
+      maxWidth={354}
+      width="100%"
+    >
       <Box position="relative">
         <img
           style={{
