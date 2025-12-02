@@ -14,14 +14,6 @@ import ServiceCardImage5 from "../../../../Temporary/Group 19.png";
 export default function ServiceSection() {
   const windowContext = useContext(WindowContext);
 
-  const getCardGap = (windowWidth: number): number => {
-    if (windowWidth > 835) {
-      return 48 / 8;
-    } else {
-      return 28 / 8;
-    }
-  };
-
   return (
     <Box
       display="flex"
@@ -46,7 +38,7 @@ export default function ServiceSection() {
           direction="row"
           flexWrap="wrap"
           justifyContent="center"
-          gap={getCardGap(windowContext!.windowProps.width)}
+          gap={windowContext!.windowProps.width > 835 ? 48 / 8 : 28 / 8}
         >
           <ServiceCard
             title="Tire Ordering"

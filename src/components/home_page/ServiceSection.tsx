@@ -1,4 +1,4 @@
-import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
 import ServiceCard from "./ServiceCard";
 
