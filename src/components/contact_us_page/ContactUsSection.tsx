@@ -1,17 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Alert, Box, Button, Snackbar, Stack, Typography } from "@mui/material";
+import emailjs from "@emailjs/browser";
 
 import { Breakpoint, WindowContext } from "../../context/WindowContext";
 import LabeldOutlinedInputField from "../../components/common/LabeledOutlinedInputField";
 import { CustomThemeContext } from "../../context/CustomThemeContext";
 
 import BackgroundImage from "../../assets/webps/contact_us_page/background.webp";
-import { useNavigate } from "react-router-dom";
+
+const emailJsAccountPublicId = "yaXxmplrmwejKtmos";
+const emailServiceId = "service_wc6hrhq";
+const templateId = "template_s23s3mp";
 
 export default function ContactUsSection() {
   const windowContext = useContext(WindowContext);
   const customeThemeContext = useContext(CustomThemeContext);
-  const navigate = useNavigate();
   const [contactUsFormData, setContactUsFormData] = useState({
     fullName: "",
     email: "",
@@ -19,8 +22,16 @@ export default function ContactUsSection() {
   });
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-  const [alertSevirity, setAlertSevirity] = useState<"success" | "warning">("success");
+  const [alertSevirity, setAlertSevirity] = useState<"success" | "warning" | "error">("success");
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const initEmailJs = () => {
+      emailjs.init(emailJsAccountPublicId);
+    };
+
+    return initEmailJs;
+  }, []);
 
   const getFormPadding = (windowWidth: number): number => {
     if (windowWidth > Breakpoint.Laptop) {
@@ -41,7 +52,7 @@ export default function ContactUsSection() {
       return 0;
     }
   };
-  
+
   const getSectionVerticalPadding = (windowWidth: number): number => {
     if (windowWidth > Breakpoint.Tablet) {
       return 80 / 8;
@@ -60,7 +71,7 @@ export default function ContactUsSection() {
     }
   };
 
-  const handleClickSubmit = () => {
+  const handleClickSubmit = async () => {
     setIsLoading(true);
 
     // NOTE(Miyuru): Maybe we do not need to check the length of the email and 
@@ -85,20 +96,33 @@ export default function ContactUsSection() {
       showAlertPopUp("Please enter a message!");
       setIsLoading(false);
     } else {
-      setContactUsFormData({
-        fullName: "",
-        email: "",
-        message: ""
-      });
-      setAlertSevirity("success");
-      showAlertPopUp("Message sent successful!");
-      setShowAlert(true);
+      try {
+        const response = await emailjs.send(
+          emailServiceId,
+          templateId,
+          {
+            email: contactUsFormData.email,
+            message: contactUsFormData.message,
+            fullName: contactUsFormData.fullName
+          }
+        );
 
-      // TODO(Miyuru): This is just for simulating a network delay.
-      //               Remove this later when integrating with the backend.
-      setTimeout(() => {
+        if (response.status) {
+          setContactUsFormData({
+            fullName: "",
+            email: "",
+            message: ""
+          });
+          setAlertSevirity("success");
+          showAlertPopUp("Email sent successful!");
+          setIsLoading(false);
+        }
+      } catch (error: any) {
+        console.error(error);
+        setAlertSevirity("error");
+        showAlertPopUp("Email sent failed!");
         setIsLoading(false);
-      }, 3000);
+      }
     }
   };
 
