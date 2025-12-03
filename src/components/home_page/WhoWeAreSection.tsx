@@ -16,7 +16,7 @@ export default function WhoWeAreSection() {
 
   return (
     <Stack
-      pt={133 / 8}
+      pt={56 / 8}
       alignItems="center"
     >
       <Stack
@@ -35,7 +35,10 @@ export default function WhoWeAreSection() {
           />
         </Box>
 
-        <Stack pl={33 / 8} flex={1}>
+        <Stack
+          pl={windowContext!.windowProps.width > Breakpoint.Laptop ? 33 / 8 : 0}
+          flex={1}
+        >
           <Typography
             color="#9F9F9F"
             fontSize={14}
@@ -58,6 +61,7 @@ export default function WhoWeAreSection() {
             color="#757575"
             fontFamily="Poppins"
             fontWeight={500}
+            textAlign={windowContext!.windowProps.width > Breakpoint.MobileLarge ? "left" : "justify"}
           >
             At Align Ease, we combine years of mechanical expertise with digital convenience. Our web-based platform lets customers book services, track maintenance, and get real-time notifications — all in one place. With a focus on customer satisfaction, we deliver transparency, efficiency, and peace of mind
           </Typography>
@@ -67,6 +71,7 @@ export default function WhoWeAreSection() {
             color="#757575"
             fontFamily="Poppins"
             fontWeight={500}
+            textAlign={windowContext!.windowProps.width > Breakpoint.MobileLarge ? "left" : "justify"}
           >
             Whether you need tire ordering, wheel balancing, nitrogen filling, or part replacement, Align Ease ensures every service is handled with precision and care. Our intuitive system empowers customers with real-time access to service updates, personalized recommendations, and a complete history of their vehicle maintenance
           </Typography>

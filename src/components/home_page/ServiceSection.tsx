@@ -1,22 +1,24 @@
+import { useContext } from "react";
 import { Stack, Typography } from "@mui/material";
 
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 import ServiceCard from "./ServiceCard";
 
 import WheelImage from "../../assets/webps/home_page/wheel.webp";
 import SteeringWheelImage from "../../assets/webps/home_page/steering_wheel.webp";
 import OxigenTankImage from "../../assets/webps/home_page/oxygen_tank.webp";
 import CarEngineImage from "../../assets/webps/home_page/car_engine.webp";
-import { useContext } from "react";
-import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 export default function ServiceSection() {
   const windowContext = useContext(WindowContext);
 
   return (
-    <Stack alignItems="center">
+    <Stack
+      alignItems="center"
+      pt={56 / 8}
+    >
       <Stack
         alignItems="center"
-        pt={52 / 8}
         pb={37 / 8}
       >
         <Typography

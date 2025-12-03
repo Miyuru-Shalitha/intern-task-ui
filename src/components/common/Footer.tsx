@@ -49,6 +49,7 @@ export default function Footer() {
             width={windowContext!.windowProps.width > Breakpoint.Laptop ? 390 : undefined}
             mt={25 / 8}
             mb={43 / 8}
+            textAlign={windowContext!.windowProps.width > Breakpoint.MobileLarge ? "left" : "justify"}
           >
             Your trusted partner for smart, reliable vehicle maintenance—precision service, easy scheduling, and peace of mind every mile. Expert care with cutting-edge tech to keep you driving safely.
           </Typography>

@@ -1,17 +1,27 @@
+import { useContext } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
-import AlignEaseBackgroundImage from "../../assets/webps/home_page/align_ease_background.webp";
-import { useContext } from "react";
 import { Breakpoint, WindowContext } from "../../context/WindowContext";
+
+import AlignEaseBackgroundImage from "../../assets/webps/home_page/align_ease_background.webp";
 
 export default function AlignEaseSection() {
   const windowContext = useContext(WindowContext);
+  
+  const getContainerVerticalPadding = (windowWidth: number): number => {
+    if (windowWidth > Breakpoint.Tablet) {
+      return 60 / 8;
+    } else if (windowWidth > Breakpoint.MobileLarge) {
+      return 40 / 8;
+    } else {
+      return 26 / 8;
+    }
+  };
 
   return (
     <Stack
-      mt={172 / 8}
-      pt={79 / 8}
-      pb={59 / 8}
+      mt={70 / 8}
+      py={getContainerVerticalPadding(windowContext!.windowProps.width)}
       px={32 / 8}
       bgcolor="#000"
       color="#FFF"
@@ -31,6 +41,7 @@ export default function AlignEaseSection() {
             fontFamily="Poppins"
             fontWeight={600}
             fontSize={30}
+            lineHeight={windowContext!.windowProps.width > Breakpoint.MobileLarge ? 1.4 : 1.3}
           >
             Trusted maintenance and diagnostics for smooth, reliable driving every mile.
           </Typography>
@@ -38,6 +49,7 @@ export default function AlignEaseSection() {
           <Typography
             fontFamily="Poppins"
             fontWeight={500}
+            textAlign={windowContext!.windowProps.width > Breakpoint.MobileLarge ? "left" : "justify"}
           >
             Reliable care, effortless service, and peace of mind—drive worry-free.Schedule with ease, get expert attention, and keep your vehicle in top shape wherever the road takes you. <br />From routine tune-ups to advanced diagnostics, we deliver quality and convenience that keeps you moving forward confidently.
           </Typography>
