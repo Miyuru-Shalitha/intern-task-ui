@@ -4,8 +4,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import { CustomThemeContext } from "../../context/CustomThemeContext";
 import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
-// TODO(Miyuru): Convert this to webp and import that instead.
-import HeaderImage from "../../../../Temporary/Group 14.png";
+import HeaderImage from "../../assets/webps/service_page/header_background.webp";
 
 export default function HeaderSection() {
   const customThemeContext = useContext(CustomThemeContext);

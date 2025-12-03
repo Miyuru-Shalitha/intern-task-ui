@@ -4,12 +4,11 @@ import { Box, Stack, Typography } from "@mui/material";
 import ServiceCard from "./ServiceCard";
 import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
-// TODO(Miyuru): Convert these to webp and import those instead.
-import ServiceCardImage1 from "../../../../Temporary/Group 15.png";
-import ServiceCardImage2 from "../../../../Temporary/Group 16.png";
-import ServiceCardImage3 from "../../../../Temporary/Group 17.png";
-import ServiceCardImage4 from "../../../../Temporary/Group 18.png";
-import ServiceCardImage5 from "../../../../Temporary/Group 19.png";
+import ServiceCardImage1 from "../../assets/webps/service_page/service_card_1_background.webp";
+import ServiceCardImage2 from "../../assets/webps/service_page/service_card_2_background.webp";
+import ServiceCardImage3 from "../../assets/webps/service_page/service_card_3_background.webp";
+import ServiceCardImage4 from "../../assets/webps/service_page/service_card_4_background.webp";
+import ServiceCardImage5 from "../../assets/webps/service_page/service_card_5_background.webp";
 
 export default function ServiceSection() {
   const windowContext = useContext(WindowContext);

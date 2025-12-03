@@ -4,13 +4,12 @@ import { Box, Stack, Typography } from "@mui/material";
 import { Breakpoint, WindowContext } from "../../context/WindowContext";
 import ProductCard from "./ProductCard";
 
-// TODO(Miyuru): Convert these to webp and import those instead.
-import prodct1Image1 from "../../../../Temporary/product_1.png";
-import prodct1Image2 from "../../../../Temporary/product_2.png";
-import prodct1Image3 from "../../../../Temporary/product_3.png";
-import prodct1Image4 from "../../../../Temporary/product_4.png";
-import prodct1Image5 from "../../../../Temporary/product_5.png";
-import prodct1Image6 from "../../../../Temporary/product_6.png";
+import prodct1Image1 from "../../assets/webps/service_page/product_1.webp";
+import prodct1Image2 from "../../assets/webps/service_page/product_2.webp";
+import prodct1Image3 from "../../assets/webps/service_page/product_3.webp";
+import prodct1Image4 from "../../assets/webps/service_page/product_4.webp";
+import prodct1Image5 from "../../assets/webps/service_page/product_5.webp";
+import prodct1Image6 from "../../assets/webps/service_page/product_6.webp";
 
 export default function ProductSection() {
   const windowContext = useContext(WindowContext);

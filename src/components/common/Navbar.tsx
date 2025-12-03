@@ -14,7 +14,6 @@ interface INavItem {
   to: string;
 }
 
-// TODO(Miyuru): Nav item paths should be replaced witih correct paths.
 const navItems: INavItem[] = [
   {
     title: "HOME",
@@ -38,8 +37,6 @@ const navItems: INavItem[] = [
   }
 ];
 
-// TODO(Miyuru): Make a mobile nav option as a drawer that slides from 
-//               right to left.
 export default function Navbar() {
   const [activeNavItem, setActiveNavItem] = useState(0);
   const navigate = useNavigate();
