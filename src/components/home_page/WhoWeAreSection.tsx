@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
 import WhoWeAreIcon from "./WhoWeAreIcon";
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 import ReparingCarImage from "../../assets/webps/home_page/repairing_car.webp";
 import DamperImage from "../../assets/svgs/home_page/damper.svg";
@@ -8,15 +10,13 @@ import BrakeImage from "../../assets/svgs/home_page/brake.svg";
 import CarRepairImage from "../../assets/svgs/home_page/car_repair.svg";
 import RepairShopImage from "../../assets/svgs/home_page/repair_shop.svg";
 import FrontCarImage from "../../assets/svgs/home_page/front_car.svg";
-import { useContext } from "react";
-import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 export default function WhoWeAreSection() {
   const windowContext = useContext(WindowContext);
 
   return (
     <Stack
-      pt={56 / 8}
+      pt={windowContext!.windowProps.width > Breakpoint.Tablet ? 120 / 8 : 56 / 8}
       alignItems="center"
     >
       <Stack

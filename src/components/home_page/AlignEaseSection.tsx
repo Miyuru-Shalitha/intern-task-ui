@@ -10,7 +10,7 @@ export default function AlignEaseSection() {
   
   const getContainerVerticalPadding = (windowWidth: number): number => {
     if (windowWidth > Breakpoint.Tablet) {
-      return 60 / 8;
+      return 80 / 8;
     } else if (windowWidth > Breakpoint.MobileLarge) {
       return 40 / 8;
     } else {

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Box, Button, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -131,32 +131,82 @@ export default function Navbar() {
             }}
           >
             <ListItem>
-              <ListItemButton>
-                <ListItemText>Home</ListItemText>
+              <ListItemButton LinkComponent={Link}>
+                <ListItemText>
+                  <Link
+                    to="/"
+                    style={{
+                      color: customThemecontext!.colors.white,
+                      textDecoration: "none"
+                    }}
+                  >
+                    Home
+                  </Link>
+                </ListItemText>
               </ListItemButton>
             </ListItem>
 
             <ListItem>
               <ListItemButton>
-                <ListItemText>Services</ListItemText>
+                <ListItemText>
+                  <Link
+                    to="/service"
+                    style={{
+                      color: customThemecontext!.colors.white,
+                      textDecoration: "none"
+                    }}
+                  >
+                    Services
+                  </Link>
+                </ListItemText>
               </ListItemButton>
             </ListItem>
 
             <ListItem>
               <ListItemButton>
-                <ListItemText>Bookings</ListItemText>
+                <ListItemText>
+                  <Link
+                    to="/booking"
+                    style={{
+                      color: customThemecontext!.colors.white,
+                      textDecoration: "none"
+                    }}
+                  >
+                    Bookings
+                  </Link>
+                </ListItemText>
               </ListItemButton>
             </ListItem>
 
             <ListItem>
               <ListItemButton>
-                <ListItemText>About Us</ListItemText>
+                <ListItemText>
+                  <Link
+                    to="/about-us"
+                    style={{
+                      color: customThemecontext!.colors.white,
+                      textDecoration: "none"
+                    }}
+                  >
+                    About Us
+                  </Link>
+                </ListItemText>
               </ListItemButton>
             </ListItem>
 
             <ListItem>
               <ListItemButton>
-                <ListItemText>Contact Us</ListItemText>
+                <ListItemText>
+                  <Link
+                    to="/contact-us"
+                    style={{
+                      color: customThemecontext!.colors.white,
+                      textDecoration: "none"
+                    }}
+                  >
+                    Contact Us
+                  </Link>
+                </ListItemText>
               </ListItemButton>
             </ListItem>
           </List>
