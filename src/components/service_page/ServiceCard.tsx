@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 
 import { CustomThemeContext } from "../../context/CustomThemeContext";
-import { WindowContext } from "../../context/WindowContext";
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 export default function ServiceCard({
   title,
@@ -21,12 +21,22 @@ export default function ServiceCard({
       return 300;
     }
   };
+  
+  const getContainerHeight = (windowWidth: number): number => {
+    if (windowWidth > Breakpoint.Tablet) {
+      return 396;
+    } else if (windowWidth > Breakpoint.MobileLarge) {
+      return 300;
+    } else {
+      return 220;
+    }
+  };
 
   return (
     <Box
       maxWidth={getContainerMaxWidth(windowContext!.windowProps.width)}
       width="100%"
-      height={396}
+      height={getContainerHeight(windowContext!.windowProps.width)}
       borderRadius={20 / 8}
       position="relative"
       overflow="hidden"

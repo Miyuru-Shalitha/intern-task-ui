@@ -19,6 +19,22 @@ export default function Footer() {
   const windowContext = useContext(WindowContext);
   const customThemeContext = useContext(CustomThemeContext);
 
+  const getGapBetweenTitleAndContnet = (windowWidth: number): number => {
+    if (windowWidth > Breakpoint.Tablet) {
+      return 24 / 8;
+    } else {
+      return 18 / 8;
+    }
+  };
+
+  const getVerticalGapBetweenSections = (windowWidth: number): number => {
+    if (windowWidth > Breakpoint.Tablet) {
+      return 8;
+    } else {
+      return 4;
+    }
+  };
+
   return (
     <Stack
       bgcolor={customThemeContext!.colors.black}
@@ -33,7 +49,7 @@ export default function Footer() {
         width="80%"
         direction={windowContext!.windowProps.width > Breakpoint.Laptop ? "row" : "column"}
         justifyContent="space-between"
-        gap={8}
+        gap={getVerticalGapBetweenSections(windowContext!.windowProps.width)}
       >
         <Stack
           flex={1}
@@ -99,9 +115,11 @@ export default function Footer() {
           flex={1}
           direction={windowContext!.windowProps.width > Breakpoint.Tablet ? "row" : "column"}
           justifyContent="space-between"
-          gap={windowContext!.windowProps.width > Breakpoint.Tablet ? 0 : 8}
+          gap={getVerticalGapBetweenSections(windowContext!.windowProps.width)}
         >
-          <Stack gap={24 / 8}>
+          <Stack
+            gap={getGapBetweenTitleAndContnet(windowContext!.windowProps.width)}
+          >
             <FooterTitle title="USEFUL LINKS" />
 
             <Stack
@@ -135,7 +153,9 @@ export default function Footer() {
             </Stack>
           </Stack>
 
-          <Stack gap={24 / 8}>
+          <Stack
+            gap={getGapBetweenTitleAndContnet(windowContext!.windowProps.width)}
+          >
             <FooterTitle title="CONTACTS" />
 
             <Stack

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
-import { WindowContext } from "../../context/WindowContext";
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 import ProductCard from "./ProductCard";
 
 // TODO(Miyuru): Convert these to webp and import those instead.
@@ -15,6 +15,16 @@ import prodct1Image6 from "../../../../Temporary/product_6.png";
 export default function ProductSection() {
   const windowContext = useContext(WindowContext);
 
+  const getInnerContainerVerticalPadding = (windowWidth: number): number => {
+    if (windowWidth > Breakpoint.Tablet) {
+      return 94 / 8;
+    } else if (windowWidth > Breakpoint.MobileLarge) {
+      return 40 / 8;
+    } else {
+      return 20 / 8;
+    }
+  };
+
   return (
     <Box
       display="flex"
@@ -23,7 +33,7 @@ export default function ProductSection() {
       <Stack
         flex={1}
         maxWidth={1440}
-        py={94 / 8}
+        py={getInnerContainerVerticalPadding(windowContext!.windowProps.width)}
         px={32 / 8}
         gap={40 / 8}
       >

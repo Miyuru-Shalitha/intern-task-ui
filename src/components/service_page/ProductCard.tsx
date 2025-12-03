@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 
 import { CustomThemeContext } from "../../context/CustomThemeContext";
-import { WindowContext } from "../../context/WindowContext";
+import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 export default function ProductCard({
   imageUrl,
@@ -31,7 +31,6 @@ export default function ProductCard({
   return (
     <Box
       maxWidth={getContainerMaxWidth(windowContext!.windowProps.width)}
-      // height={473}
       borderRadius={20 / 8}
       overflow="hidden"
       bgcolor="#F3F3F3"
