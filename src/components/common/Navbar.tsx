@@ -26,15 +26,15 @@ const navItems: INavItem[] = [
   },
   {
     title: "BOOKINGS",
-    to: "/"
+    to: "/booking"
   },
   {
     title: "ABOUT US",
-    to: "/"
+    to: "/about-us"
   },
   {
     title: "CONTACT US",
-    to: "/"
+    to: "/contact-us"
   }
 ];
 

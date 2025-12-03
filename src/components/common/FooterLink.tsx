@@ -1,16 +1,22 @@
-import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function FooterLink({
-  title
+  title,
+  to
 }: {
   title: string;
+  to: string;
 }) {
   return (
-    <Typography
-      fontSize={14}
-      color="#BDBDBD"
+    <Link
+      to={to}
+      style={{
+        fontSize: 14,
+        color: "#BDBDBD",
+        textDecoration: "none"
+      }}
     >
       {title}
-    </Typography>
+    </Link>
   );
 }

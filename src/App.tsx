@@ -6,6 +6,9 @@ import Layout from "./components/common/Layout";
 import SignInPage from "./pages/SignInPage";
 import HomePage from "./pages/HomePage";
 import ServicePage from "./pages/ServicePage";
+import BookingsPage from "./pages/BookingPage";
+import AboutUsPage from "./pages/AboutUsPage";
+import ContactUsPage from "./pages/ContactUsPage";
 
 export default function App() {
   return (
@@ -18,6 +21,9 @@ export default function App() {
             <Route path="" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="/service" element={<ServicePage />} />
+              <Route path="/booking" element={<BookingsPage />} />
+              <Route path="/about-us" element={<AboutUsPage />} />
+              <Route path="/contact-us" element={<ContactUsPage />} />
             </Route>
           </Routes>
         </WindowContextProvider>

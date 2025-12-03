@@ -13,6 +13,7 @@ import InstagramIcon from "../../assets/svgs/home_page/instagram.svg";
 import LocationIcon from "../../assets/svgs/home_page/location.svg";
 import PhoneIcon from "../../assets/svgs/home_page/phone.svg";
 import EmailIcon from "../../assets/svgs/home_page/email.svg";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const windowContext = useContext(WindowContext);
@@ -58,29 +59,39 @@ export default function Footer() {
             gap={14 / 8}
             direction="row"
           >
-            <img
-              style={{
-                width: 30,
-                height: 30
-              }}
-              src={FacebookIcon}
-            />
-
-            <Box
-              style={{
-                width: 30,
-                height: 30
-              }}
-              bgcolor={customThemeContext!.colors.white}
-              width={30}
-              height={30}
-              borderRadius={1000}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
+            <Link
+              to="https://web.facebook.com/"
+              target="_blank"
             >
-              <img src={InstagramIcon} />
-            </Box>
+              <img
+                style={{
+                  width: 30,
+                  height: 30
+                }}
+                src={FacebookIcon}
+              />
+            </Link>
+
+            <Link
+              to="https://www.instagram.com/"
+              target="_blank"
+            >
+              <Box
+                style={{
+                  width: 30,
+                  height: 30
+                }}
+                bgcolor={customThemeContext!.colors.white}
+                width={30}
+                height={30}
+                borderRadius={1000}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <img src={InstagramIcon} />
+              </Box>
+            </Link>
           </Stack>
         </Stack>
 
@@ -97,11 +108,30 @@ export default function Footer() {
               direction="column"
               gap={1}
             >
-              <FooterLink title="Home" />
-              <FooterLink title="Service" />
-              <FooterLink title="Booking" />
-              <FooterLink title="About Us" />
-              <FooterLink title="Contact Us" />
+              <FooterLink
+                title="Home"
+                to="/"
+              />
+
+              <FooterLink
+                title="Service"
+                to="/service"
+              />
+
+              <FooterLink
+                title="Booking"
+                to="/booking"
+              />
+
+              <FooterLink
+                title="About Us"
+                to="/about-us"
+              />
+
+              <FooterLink
+                title="Contact Us"
+                to="/contact-us"
+              />
             </Stack>
           </Stack>
 
