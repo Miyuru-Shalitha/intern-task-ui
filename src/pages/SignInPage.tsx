@@ -1,11 +1,12 @@
 import { Alert, Box, Button, Snackbar, Stack, Typography } from "@mui/material";
-import { useContext, useId, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { WindowContext } from "../context/WindowContext";
 import { CustomThemeContext } from "../context/CustomThemeContext";
 
 import SignInImage from "../assets/webps/sign_in_page/sign_in_image.png";
+import LabeldOutlinedInputField from "../components/common/LabeledOutlinedInputField";
 
 export default function SignInPage() {
   const [signInFormData, setSignInFormData] = useState({
@@ -19,8 +20,6 @@ export default function SignInPage() {
   const [isLoading, setIsLoading] = useState(false);
   const windowContext = useContext(WindowContext);
   const customeThemeContext = useContext(CustomThemeContext);
-  const emailId = useId();
-  const passwordId = useId();
 
   const handleSignIn = () => {
     setIsLoading(true);
@@ -150,55 +149,17 @@ export default function SignInPage() {
               gap={12 / 8}
               mb={25 / 8}
             >
-              <Stack gap={12 / 8}>
-                <label
-                  htmlFor={emailId}
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 600
-                  }}
-                >
-                  Email Address
-                </label>
+              <LabeldOutlinedInputField
+                label="Email Address"
+                value={signInFormData.email}
+                onChange={(e) => setSignInFormData({ ...signInFormData, email: e.target.value })}
+              />
 
-                <input
-                  style={{
-                    border: "1px solid #D8D8D8",
-                    borderRadius: 5,
-                    height: 40,
-                    padding: 8
-                  }}
-                  id={emailId}
-                  type="email"
-                  value={signInFormData.email}
-                  onChange={(e) => setSignInFormData({ ...signInFormData, email: e.target.value })}
-                />
-              </Stack>
-
-              <Stack gap={12 / 8}>
-                <label
-                  htmlFor={passwordId}
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 600
-                  }}
-                >
-                  Password
-                </label>
-
-                <input
-                  style={{
-                    border: "1px solid #D8D8D8",
-                    borderRadius: 5,
-                    height: 40,
-                    padding: 8
-                  }}
-                  id={passwordId}
-                  type="password"
-                  value={signInFormData.password}
-                  onChange={(e) => setSignInFormData({ ...signInFormData, password: e.target.value })}
-                />
-              </Stack>
+              <LabeldOutlinedInputField
+                label="Password"
+                value={signInFormData.password}
+                onChange={(e) => setSignInFormData({ ...signInFormData, password: e.target.value })}
+              />
             </Stack>
 
             <Button
@@ -216,7 +177,11 @@ export default function SignInPage() {
               Proceed
             </Button>
 
-            <Typography textAlign="center" mt={17 / 8} color="#757575">
+            <Typography
+              textAlign="center"
+              mt={17 / 8}
+              color="#757575"
+            >
               If you don’t have an account? <span style={{
                 color: "#DB002B",
                 fontWeight: 500
