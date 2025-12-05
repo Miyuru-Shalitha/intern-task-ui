@@ -1,13 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-import { Box, Button, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
+import { Box, Button, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Stack, Typography } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import NavListItem from "./NavListItem";
 import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 import Logo from "../../assets/webps/common/logo.webp";
 import { CustomThemeContext } from "../../context/CustomThemeContext";
+
+import userProfileAvatar from "../../assets/svgs/common/user_profile_avatar.svg";
+import dropdownIcon from "../../assets/svgs/common/dropdown.svg";
 
 interface INavItem {
   title: string;
@@ -43,6 +45,7 @@ export default function Navbar() {
   const windowContext = useContext(WindowContext);
   const customThemecontext = useContext(CustomThemeContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
 
   // NOTE(Miyuru): Set the nav item index when the route is loaded.
   useEffect(() => {
@@ -255,35 +258,64 @@ export default function Navbar() {
               )}
             </Stack>
 
-            <Stack direction="row" gap={7 / 8}>
-              <Button
-                size={getButtonSize(windowContext!.windowProps.width)}
-                onClick={handleClickLogIn}
-                variant="outlined"
-                disableElevation
-                sx={{
-                  color: customThemecontext!.colors.white,
-                  border: 1,
-                  borderColor: customThemecontext!.colors.white,
-                  borderRadius: 10 / 8
-                }}
+            {isSignedIn ?
+              // TODO(Miyuru): Make this a drop down menu.
+              <Stack
+                direction="row"
+                alignItems="center"
+                gap={15 / 8}
               >
-                Log In
-              </Button>
+                <img
+                  src={userProfileAvatar}
+                  width={45}
+                  height={45}
+                />
 
-              <Button
-                size={getButtonSize(windowContext!.windowProps.width)}
-                onClick={handleClickSignUp}
-                variant="contained"
-                disableElevation
-                sx={{
-                  bgcolor: customThemecontext!.colors.secondary,
-                  color: customThemecontext!.colors.white
-                }}
-              >
-                Sign Up
-              </Button>
-            </Stack>
+                <Typography
+                  color={customThemecontext!.colors.white}
+                  fontWeight={600}
+                >
+                  Kavindu Kalhara
+                </Typography>
+
+                <img
+                  src={dropdownIcon}
+                  width={12.5}
+                  height={6.25}
+                />
+              </Stack>
+              :
+              <Stack direction="row" gap={7 / 8}>
+                <Button
+                  size={getButtonSize(windowContext!.windowProps.width)}
+                  onClick={handleClickLogIn}
+                  variant="outlined"
+                  disableElevation
+                  sx={{
+                    color: customThemecontext!.colors.white,
+                    border: 1,
+                    borderColor: customThemecontext!.colors.white,
+                    borderRadius: 10 / 8
+                  }}
+                >
+                  Log In
+                </Button>
+
+                <Button
+                  size={getButtonSize(windowContext!.windowProps.width)}
+                  onClick={handleClickSignUp}
+                  variant="contained"
+                  disableElevation
+                  sx={{
+                    bgcolor: customThemecontext!.colors.secondary,
+                    color: customThemecontext!.colors.white
+                  }}
+                >
+                  Sign Up
+                </Button>
+              </Stack>
+
+            }
           </Stack>
           :
           <IconButton onClick={() => setIsDrawerOpen(true)}>
