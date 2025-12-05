@@ -1,5 +1,5 @@
-import { Stack } from "@mui/material";
 import type { ReactNode } from "react";
+import { Stack } from "@mui/material";
 
 export default function FooterIconLink({
   iconUrl,
@@ -9,18 +9,22 @@ export default function FooterIconLink({
   children: ReactNode;
 }) {
   return (
-    <Stack
-      direction="row"
-      gap={15 / 8}
+    <a
+      href="mailto:alignease@gmail.com"
     >
-      <img
-        style={{
-          width: 18
-        }}
-        src={iconUrl}
-      />
+      <Stack
+        direction="row"
+        gap={15 / 8}
+      >
+        <img
+          style={{
+            width: 18
+          }}
+          src={iconUrl}
+        />
 
-      {children}
-    </Stack>
+        {children}
+      </Stack>
+    </a>
   );
 }
