@@ -4,8 +4,8 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import { CustomThemeContext } from "../../context/CustomThemeContext";
 import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
-import CalenderIcon from "../../assets/svgs/individual_service_page/calendar.svg";
-import ClockIcon from "../../assets/svgs/individual_service_page/clock.svg";
+import CalenderIcon from "../../assets/svgs/common/calendar.svg";
+import ClockIcon from "../../assets/svgs/common/clock.svg";
 
 export default function ServiceDetailSection({
   imageUrl,

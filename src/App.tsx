@@ -10,6 +10,7 @@ import BookingsPage from "./pages/BookingPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import IndividualServicePage from "./pages/IndividualServicePage";
+import MyActivityPage from "./pages/MyActivityPage";
 
 export default function App() {
   return (
@@ -28,6 +29,8 @@ export default function App() {
               <Route path="/booking" element={<BookingsPage />} />
               <Route path="/about-us" element={<AboutUsPage />} />
               <Route path="/contact-us" element={<ContactUsPage />} />
+              
+              <Route path="/my-activity" element={<MyActivityPage />} />
             </Route>
           </Routes>
         </WindowContextProvider>

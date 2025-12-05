@@ -10,7 +10,7 @@ export default function Layout() {
       {/* TODO(Miyuru): Comment this out for the release build. */}
       {/* NOTE(Miyuru): This is just to display useful values for debugging as 
                         a little window at the top right corner of the window. */}
-      <DebugWindowPropsDisplay />
+      {/* <DebugWindowPropsDisplay /> */}
 
       <Navbar />
       <Outlet />
