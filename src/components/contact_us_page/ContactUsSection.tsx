@@ -74,9 +74,9 @@ export default function ContactUsSection() {
   const handleClickSubmit = async () => {
     setIsLoading(true);
 
-    // NOTE(Miyuru): Maybe we do not need to check the length of the email and 
-    //               password weather it is zero or not, because if any of those 
-    //               are zero, "Proceed" button is disabled. But I check those
+    // NOTE(Miyuru): Maybe we do not need to check the length of each fields 
+    //               weather it is zero or not, because if any of those are
+    //               zero, "Submit" button is disabled. But I check those
     //               anyways for extra safety.
     if (contactUsFormData.fullName.length === 0) {
       setAlertSevirity("warning");
