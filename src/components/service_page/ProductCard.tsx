@@ -3,6 +3,7 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 
 import { CustomThemeContext } from "../../context/CustomThemeContext";
 import { Breakpoint, WindowContext } from "../../context/WindowContext";
+import NumberSpinner from "../third_party/NumberSpinner";
 
 export default function ProductCard({
   imageUrl,
@@ -64,8 +65,17 @@ export default function ProductCard({
         <Stack
           direction="row"
           justifyContent="space-between"
+          alignItems="center"
         >
-          <Stack
+          <NumberSpinner
+            size="small"
+            label="Quantity:"
+            min={1}
+            max={5}
+            defaultValue={1}
+          />
+
+          {/* <Stack
             direction="row"
             justifyContent="center"
           >
@@ -86,11 +96,14 @@ export default function ProductCard({
               <span>{quantity}</span>
               <span>+</span>
             </Typography>
-          </Stack>
+          </Stack> */}
 
           <Typography
             fontSize={14}
             fontWeight={500}
+            sx={{
+              transform: "translateY(50%)"
+            }}
           >
             LKR {price}
           </Typography>
