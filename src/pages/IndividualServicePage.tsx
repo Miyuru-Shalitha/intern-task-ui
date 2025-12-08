@@ -14,6 +14,9 @@ import NitrogenFillingDetailSectionImage from "../assets/webps/individual_servic
 
 import PartsReplacementHeaderSectionBackgroundImage from "../assets/webps/individual_service_page/parts_replacement_header_background.webp";
 import PartsReplacementDetailSectionImage from "../assets/webps/individual_service_page/parts_replacement.webp";
+import ServiceTireOrdering from "../components/individual_service_page/ServiceTireOrdering";
+
+import TireOrderingSectionHeaderBackgroundImage from "../assets/webps/individual_service_page/tire_ordering_header_background.webp";
 
 export default function IndividualServicePage() {
   const { id } = useParams();
@@ -64,6 +67,15 @@ export default function IndividualServicePage() {
       detailSectionTitle: "Reliable Parts Replacement by Certified Technicians",
       detailSectionDescription1: "When it comes to keeping your vehicle running at its best, worn-out or damaged parts can’t be ignored. At Align Ease, we provide professional parts replacement using high-quality, manufacturer-recommended components to ensure optimal performance and safety.",
       detailSectionDescription2: "From engine components to belts, hoses, filters, and more — our experienced technicians diagnose the issue and install replacements with precision and care. Every replacement is backed by a thorough quality check, giving you confidence on the road.Don’t let a faulty part slow you down. Book your service now and keep your vehicle in peak condition."
+    },
+    {
+      headerSectionBackgroundImageUrl: TireOrderingSectionHeaderBackgroundImage,
+      heroTitle: "Tire Ordering",
+      headerSectionDescription: "Browse top-quality brands, find the perfect fit for your vehicle, and order with just a few clicks. Fast delivery and expert installation available.",
+      detailSectionImageUrl: "",
+      detailSectionTitle: "",
+      detailSectionDescription1: "",
+      detailSectionDescription2: ""
     }
   ];
 
@@ -75,12 +87,17 @@ export default function IndividualServicePage() {
         description={details[parseInt(id!)].headerSectionDescription}
       />
 
-      <ServiceDetailSection
-        imageUrl={details[parseInt(id!)].detailSectionImageUrl}
-        title={details[parseInt(id!)].detailSectionTitle}
-        description1={details[parseInt(id!)].detailSectionDescription1}
-        description2={details[parseInt(id!)].detailSectionDescription2}
-      />
+      {id !== "4" ?
+        <ServiceDetailSection
+          imageUrl={details[parseInt(id!)].detailSectionImageUrl}
+          title={details[parseInt(id!)].detailSectionTitle}
+          description1={details[parseInt(id!)].detailSectionDescription1}
+          description2={details[parseInt(id!)].detailSectionDescription2}
+        />
+        :
+        <ServiceTireOrdering />
+      }
+
     </>
   );
 }

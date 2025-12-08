@@ -11,6 +11,9 @@ export default function FooterIconLink({
   return (
     <a
       href="mailto:alignease@gmail.com"
+      style={{
+        textDecoration: "none"
+      }}
     >
       <Stack
         direction="row"
