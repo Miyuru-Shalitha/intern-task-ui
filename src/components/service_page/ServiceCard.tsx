@@ -6,10 +6,12 @@ import { Breakpoint, WindowContext } from "../../context/WindowContext";
 
 export default function ServiceCard({
   title,
-  imageUrl
+  imageUrl,
+  href
 }: {
   title: string;
   imageUrl: string;
+  href: string;
 }) {
   const customThemeContext = useContext(CustomThemeContext);
   const windowContext = useContext(WindowContext);
@@ -21,7 +23,7 @@ export default function ServiceCard({
       return 300;
     }
   };
-  
+
   const getContainerHeight = (windowWidth: number): number => {
     if (windowWidth > Breakpoint.Tablet) {
       return 396;
@@ -70,6 +72,7 @@ export default function ServiceCard({
         </Typography>
 
         <Button
+          href={href}
           variant="contained"
           disableElevation
           fullWidth

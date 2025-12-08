@@ -52,26 +52,31 @@ export default function ServiceSection() {
           <ServiceCard
             title="Tire Ordering"
             imageUrl={ServiceCardImage1}
+            href="/service/4"
           />
 
           <ServiceCard
             title="Wheel Balancing"
             imageUrl={ServiceCardImage2}
+            href="/service/0"
           />
 
           <ServiceCard
             title="Nitrogen Filling"
             imageUrl={ServiceCardImage3}
+            href="/service/2"
           />
 
           <ServiceCard
             title="Tire patching and vulcanizing"
             imageUrl={ServiceCardImage4}
+            href="/service/1"
           />
 
           <ServiceCard
             title="Parts Replacement"
             imageUrl={ServiceCardImage5}
+            href="/service/3"
           />
         </Stack>
       </Stack>
