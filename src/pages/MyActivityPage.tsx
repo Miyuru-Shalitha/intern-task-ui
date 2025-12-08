@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 
+import { Breakpoint, WindowContext } from "../context/WindowContext";
 import ActivityCard from "../components/my_activity_page/ActivityCard";
 
 import Activity1Image from "../assets/webps/my_activity_page/activity_1.webp";
@@ -61,6 +63,8 @@ const activites: IActivity[] = [
 ];
 
 export default function MyActivityPage() {
+  const windowContext = useContext(WindowContext);
+
   return (
     <Box
       display="flex"
@@ -87,8 +91,8 @@ export default function MyActivityPage() {
           {activites.map((activity: IActivity, index: number) =>
             <Grid
               key={index}
-              size={6}
-              height={125}
+              size={windowContext!.windowProps.width > Breakpoint.Laptop ? 6 : 12}
+            // height={125}
             >
               <ActivityCard
                 imageUrl={activity.imageUrl}

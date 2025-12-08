@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import { Box, Stack, Typography } from "@mui/material";
+
+import { WindowContext } from "../../context/WindowContext";
 
 import CalenderIcon from "../../assets/svgs/common/calendar.svg";
 import ClockIcon from "../../assets/svgs/common/clock.svg";
@@ -20,20 +23,22 @@ export default function ActivityCard({
   date,
   time
 }: IActivity) {
+  const windowContext = useContext(WindowContext);
+
   return (
     <Stack
-      direction="row"
-      gap={24 / 8}
+      direction={windowContext!.windowProps.width > 570 ? "row" : "column"}
+      gap={windowContext!.windowProps.width > 570 ? 24 / 8 : 0}
       bgcolor="#F3F3F3"
       borderRadius={10 / 8}
       height="100%"
+      overflow="hidden"
     >
       <Box
-        my={6 / 8}
-        mx={8 / 8}
-        width={125}
-        height={113}
-        borderRadius={7 / 8}
+        my={windowContext!.windowProps.width > 570 ? 6 / 8 : 17 / 8}
+        px={windowContext!.windowProps.width > 570 ? 8 / 8 : 17 / 8}
+        width={windowContext!.windowProps.width > 570 ? 125 : "100%"}
+        height={windowContext!.windowProps.width > 570 ? 113 : undefined}
         overflow="hidden"
       >
         <img
@@ -41,15 +46,19 @@ export default function ActivityCard({
           width="100%"
           height="100%"
           style={{
-            objectFit: "cover"
+            objectFit: "cover",
+            borderRadius: "0.4375rem" // 7px
           }}
         />
       </Box>
 
       <Stack
+        flex={1}
         justifyContent="space-between"
         py={17 / 8}
         pr={17 / 8}
+        pl={windowContext!.windowProps.width > 570 ? 0 : 17 / 8}
+        gap={7 / 8}
       >
         <Stack
           gap={7 / 8}
@@ -71,8 +80,9 @@ export default function ActivityCard({
         </Stack>
 
         <Stack
-          direction="row"
+          direction={windowContext!.windowProps.width > 540 ? "row" : "column"}
           justifyContent="space-between"
+          gap={8 / 8}
         >
           <Typography
             fontSize={14}
