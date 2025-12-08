@@ -73,7 +73,9 @@ export default function ActivityCard({
 
           <Typography
             fontSize={14}
+            fontWeight={500}
             lineHeight={1.2}
+            color="#757575"
           >
             {description}
           </Typography>
