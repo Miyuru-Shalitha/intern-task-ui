@@ -45,7 +45,7 @@ export default function Navbar() {
   const windowContext = useContext(WindowContext);
   const customThemecontext = useContext(CustomThemeContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   // NOTE(Miyuru): Set the nav item index when the route is loaded.
   useEffect(() => {
@@ -314,7 +314,6 @@ export default function Navbar() {
                   Sign Up
                 </Button>
               </Stack>
-
             }
           </Stack>
           :
